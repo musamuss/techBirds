@@ -15,6 +15,10 @@ class StartViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        
+        App.current.appStore.getReviews(appID: .sberbankOnline, page: 1) { reviews in
+            print(reviews)
+        }
     }
 
 }
