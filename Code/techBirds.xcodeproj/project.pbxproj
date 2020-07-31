@@ -21,6 +21,7 @@
 		A56C3A9824D47C44001A4543 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56C3A9724D47C44001A4543 /* App.swift */; };
 		A56C3A9A24D47C9F001A4543 /* ClassifierService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56C3A9924D47C9F001A4543 /* ClassifierService.swift */; };
 		A56C3A9C24D47CBD001A4543 /* AppStoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56C3A9B24D47CBD001A4543 /* AppStoreService.swift */; };
+		A5B3C60424D4A3860073E98B /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B3C60324D4A3860073E98B /* Review.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		A56C3A9724D47C44001A4543 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		A56C3A9924D47C9F001A4543 /* ClassifierService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassifierService.swift; sourceTree = "<group>"; };
 		A56C3A9B24D47CBD001A4543 /* AppStoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreService.swift; sourceTree = "<group>"; };
+		A5B3C60324D4A3860073E98B /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,8 +74,9 @@
 		84951F7C24D4781700271113 /* techBirds */ = {
 			isa = PBXGroup;
 			children = (
-				A56C3A9D24D47CC2001A4543 /* Services */,
 				A56C3A9E24D47CD0001A4543 /* App */,
+				A56C3A9D24D47CC2001A4543 /* Services */,
+				A5B3C60524D4A38A0073E98B /* Models */,
 				84951F9424D4805300271113 /* VC */,
 				84951F8324D4781700271113 /* Main.storyboard */,
 				84951F9524D483EF00271113 /* StartViewController.swift */,
@@ -121,6 +124,14 @@
 				84951F7F24D4781700271113 /* SceneDelegate.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		A5B3C60524D4A38A0073E98B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A5B3C60324D4A3860073E98B /* Review.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,6 +207,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84951F9A24D4877A00271113 /* CommentViewController.swift in Sources */,
+				A5B3C60424D4A3860073E98B /* Review.swift in Sources */,
 				A56C3A9A24D47C9F001A4543 /* ClassifierService.swift in Sources */,
 				84FB37ED24D4927400DCD835 /* AppsCollectionViewCell.swift in Sources */,
 				A56C3A9824D47C44001A4543 /* App.swift in Sources */,
