@@ -13,7 +13,7 @@ class StartViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        performSegue(withIdentifier: "toComments", sender: Any?.self)
         // Do any additional setup after loading the view.
     }
 
