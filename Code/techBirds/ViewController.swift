@@ -14,6 +14,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        App.current.appStore.getReviews()
+        let category = App.current.categoriesClassifier.classify(
+            "Где открывали, туда и идите. До сих пор! А я пожалуй закрою карту и все счета в сбере."
+        )
+        
+        print(category)
     }
 }
