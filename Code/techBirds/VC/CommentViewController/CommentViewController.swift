@@ -11,9 +11,6 @@ import UIKit
 class CommentViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var ratingLabel: UILabel!
-    @IBOutlet weak var quantityLabel: UILabel!
-    @IBOutlet weak var withoutNegativeLabel: UILabel!
     
     var reviews: [Review]?
     var teamReviews: [Review] = []
@@ -33,26 +30,59 @@ class CommentViewController: UIViewController {
         reviews = classifiedReviews
         teamReviews = classifiedReviews.filter { $0.team == App.current.selectedTeam }
     }
-
 }
 // MARK: - UITableViewDelegate
 extension CommentViewController: UITableViewDelegate {
     
 }
+
 // MARK: - UITableViewDataSource
 extension CommentViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let reviews = reviews else { return 0 }
-        return reviews.count
+        switch Section(rawValue: section) {
+        case .header: return 1
+        case .reviews: return (reviews ?? []).count
+        default: return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell", for: indexPath) as? CommentsTableViewCell, let reviews = reviews {
-            cell.configure(review: reviews[indexPath.row])
+        let defaultCell = UITableViewCell()
+        
+        switch Section(rawValue: indexPath.section) {
+        case .header:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell", for: indexPath) as? ReviewsHeaderCell else {
+                return defaultCell
+            }
+            
+            cell.configure(appName: "Сбербанк Онлайн", rating: 2, metric: "дней без прорыва")
+            
             return cell
+            
+        case .reviews:
+            
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell", for: indexPath) as? CommentsTableViewCell,
+                let reviews = reviews else {
+                return defaultCell
+            }
+            
+            cell.configure(review: reviews[indexPath.row])
+            
+            return cell
+            
+        default:
+            return defaultCell
         }
-        return UITableViewCell()
     }
-    
-    
+}
+
+extension CommentViewController {
+    enum Section: Int {
+        case header
+        case reviews
+    }
 }
