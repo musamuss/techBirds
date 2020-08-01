@@ -14,21 +14,12 @@ class CommentViewController: UIViewController {
     
     var reviews: [Review]?
     var teamReviews: [Review] = []
+    var isDataLoading = false
+    var pageNo = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let classifiedReviews: [Review] = (reviews ?? []).map { review in
-            var classifiedReview: Review
-                
-            classifiedReview = App.current.categoriesClassifier.classify(review)
-            classifiedReview = App.current.teamsClassifier.classify(classifiedReview)
-                
-            return classifiedReview
-        }
-        
-        reviews = classifiedReviews
-        teamReviews = classifiedReviews.filter { $0.team == App.current.selectedTeam }
+        self.reviews = classifiedReviews(reviews: reviews ?? [])
     }
 }
 // MARK: - UITableViewDelegate
@@ -76,6 +67,46 @@ extension CommentViewController: UITableViewDataSource {
             
         default:
             return defaultCell
+        }
+    }
+}
+
+extension CommentViewController {
+    func getNewData(page: Int) {
+        App.current.appStore.getReviews(appID: .sberbankOnline, page: page) { (succses) in
+            DispatchQueue.main.async {
+                let responce = self.classifiedReviews(reviews: succses)
+                self.reviews?.append(contentsOf: responce)
+                self.tableView.reloadData()
+            }
+        }
+    }
+
+    func classifiedReviews(reviews: [Review]) -> [Review] {
+        return reviews.map { review in
+            var classifiedReview: Review
+            classifiedReview = App.current.categoriesClassifier.classify(review)
+            classifiedReview = App.current.teamsClassifier.classify(classifiedReview)
+            return classifiedReview
+        }
+    }
+}
+
+extension CommentViewController: UIScrollViewDelegate {
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        print("scrollViewWillBeginDragging")
+        
+        isDataLoading = false
+    }
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        print("scrollViewDidEndDragging")
+        
+        if ((tableView.contentOffset.y + tableView.frame.size.height) >= tableView.contentSize.height) {
+            if !isDataLoading{
+                isDataLoading = true
+                self.pageNo=self.pageNo+1
+                getNewData(page: self.pageNo)
+            }
         }
     }
 }
