@@ -2,9 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "container:Code/techBirds.xcodeproj">
+      location = "group:techBirds.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Code/techBirdsMarkup/techBirdsMarkup.xcodeproj">
+      location = "group:techBirdsMarkup/techBirdsMarkup.xcodeproj">
    </FileRef>
 </Workspace>
