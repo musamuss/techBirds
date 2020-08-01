@@ -21,18 +21,41 @@ class CommentsTableViewCell: UITableViewCell {
         toneView.layer.cornerRadius = toneView.bounds.height / 2
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        super.setHighlighted(highlighted, animated: animated)
+        
+        if highlighted {
+            moveIn()
+        } else {
+            moveOut()
+        }
     }
     
     func configure(review: Review) {
         self.nicknameLabel.text = review.author
-        self.dateLabel.text = review.team.rawValue
+        self.dateLabel.text = "" //review.team.rawValue
         self.descriptionLabel.text = review.text
         self.toneView.backgroundColor = review.category.color
         self.toneLabel.text = review.category.title
+    }
+    
+    private let moveDuration: TimeInterval = 0.2
+    private let moveScale: CGFloat = 0.95
+    
+    private func moveIn() {
+        layer.removeAllAnimations()
+
+        UIView.animate(withDuration: moveDuration) { [unowned self] in
+            self.transform = .init(scaleX: self.moveScale, y: self.moveScale)
+        }
+    }
+
+    private func moveOut() {
+        layer.removeAllAnimations()
+
+        UIView.animate(withDuration: moveDuration) { [unowned self] in
+            self.transform = .identity
+        }
     }
 }
 

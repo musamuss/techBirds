@@ -11,19 +11,42 @@ import UIKit
 class CommandsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        super.setHighlighted(highlighted, animated: animated)
+        
+        if highlighted {
+            moveIn()
+        } else {
+            moveOut()
+        }
     }
     
     func configure(with title: String) {
         titleLabel.text = title
     }
 
+    private let moveDuration: TimeInterval = 0.2
+    private let moveScale: CGFloat = 0.95
+    
+    private func moveIn() {
+        layer.removeAllAnimations()
+
+        UIView.animate(withDuration: moveDuration) { [unowned self] in
+            self.transform = .init(scaleX: self.moveScale, y: self.moveScale)
+        }
+    }
+
+    private func moveOut() {
+        layer.removeAllAnimations()
+
+        UIView.animate(withDuration: moveDuration) { [unowned self] in
+            self.transform = .identity
+        }
+    }
 }

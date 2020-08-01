@@ -12,10 +12,12 @@ class ReviewsHeaderCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var metricLabel: UILabel!
+    @IBOutlet weak var metricValueValue: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        metricLabel.text = " положительных отзывов"
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -24,10 +26,10 @@ class ReviewsHeaderCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configure(appName: String, rating: Double, metric: String) {
+    func configure(appName: String, rating: Double, metric: Double) {
         self.titleLabel.text = appName
         self.subtitleLabel.text = "\(rating) из 5"
-        self.metricLabel.text = metric
+        self.metricValueValue.text = "\(metric)%"
     }
 }
 

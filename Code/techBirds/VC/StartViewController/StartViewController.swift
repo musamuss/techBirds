@@ -30,7 +30,6 @@ class StartViewController: UITableViewController {
             vc.reviews = rewiew
         }
     }
-
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
