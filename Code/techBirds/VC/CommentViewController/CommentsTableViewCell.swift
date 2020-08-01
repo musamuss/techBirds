@@ -12,6 +12,8 @@ class CommentsTableViewCell: UITableViewCell {
     @IBOutlet weak var nicknameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var toneView: UIView!
+    @IBOutlet weak var toneLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,6 +24,14 @@ class CommentsTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func configure(review: Review) {
+        self.nicknameLabel.text = review.author
+        self.dateLabel.text = "1"
+        self.descriptionLabel.text = review.text
+        self.toneView.backgroundColor = .red
+        self.toneLabel.text = "лул"
     }
 
 }

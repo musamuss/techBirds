@@ -16,5 +16,5 @@ class App {
     
     // Classifiers
     let categoriesClassifier = CategoriesClassifierService()
-    let teamsClassifier = TeamsClassifier()
+    let teamsClassifier = TeamsClassifierService()
 }

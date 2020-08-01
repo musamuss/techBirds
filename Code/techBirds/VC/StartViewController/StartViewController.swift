@@ -10,10 +10,21 @@ import UIKit
 
 class StartViewController: UITableViewController {
 
+    let avalibleTeam = Review.Team.all
+    var rowSelected: Int?
+    var rewiew: [Review]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = "Команды"
         
-        // Do any additional setup after loading the view.
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? CommentViewController, let rowSelected = rowSelected {
+            vc.navigationItem.title = avalibleTeam[rowSelected].rawValue
+            vc.review = rewiew
+        }
     }
 
 }
@@ -29,7 +40,7 @@ extension StartViewController {
         super.tableView(tableView, numberOfRowsInSection: section)
         switch section {
         case 0: return 1
-        case 1: return 10
+        case 1: return avalibleTeam.count
         default: return 0
         }
     }
@@ -39,9 +50,25 @@ extension StartViewController {
             
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "commandCell", for: indexPath)
-            return cell
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "commandCell", for: indexPath) as? CommandsTableViewCell {
+                cell.configure(with: avalibleTeam[indexPath.row].rawValue)
+                return cell
+            }
+        }
+        return UITableViewCell()
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if indexPath.section != 0 {
+            rowSelected = indexPath.row
+            App.current.appStore.getReviews(appID: .sberbankOnline, page: 1) { (succses) in
+                self.rewiew = succses
+                DispatchQueue.main.async {
+                    self.performSegue(withIdentifier: "toComments", sender: self)
+                }
+            }
         }
     }
+        
 }
-
