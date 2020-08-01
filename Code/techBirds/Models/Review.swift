@@ -92,6 +92,7 @@ extension Review {
         case efsSBOLWealth = "[ЕФС] Б.УБ.СБОЛ.Баллонг"
         case efsInsurance = "ЕФС. Страхование"
         case telecom = "Телеком"
+        case marketing = "Маркетинг"
         case undefined
         
         static var all: [Team] {
@@ -138,7 +139,8 @@ extension Review {
                 efsBrokerMobile,
                 efsSBOLWealth,
                 efsInsurance,
-                telecom
+                telecom,
+                marketing
             ]
         }
     }

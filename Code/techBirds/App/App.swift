@@ -11,6 +11,10 @@ import Foundation
 class App {
     static let current = App()
     
+    // Services
     let appStore = AppStoreService()
+    
+    // Classifiers
     let categoriesClassifier = CategoriesClassifierService()
+    let teamsClassifier = TeamsClassifier()
 }

@@ -65,7 +65,8 @@ class ViewController: NSViewController {
     
     // MARK: Private
     
-    private let reviewsCount = 100
+    private let startPage = 3
+    private let reviewsCount = 200
     private let reviewsPerPage = 50
     private var pagesCount: Int { reviewsCount / reviewsPerPage }
     
@@ -89,9 +90,11 @@ class ViewController: NSViewController {
         ratingField.stringValue = String(repeating: "⭐️", count: review.rating)
         reviewField.stringValue = review.text
 
+        categoryBox.removeAllItems()
         categoryBox.addItems(withObjectValues: Review.Category.all.map { $0.rawValue })
         categoryBox.selectItem(at: 0)
         
+        teamBox.removeAllItems()
         teamBox.addItems(withObjectValues: Review.Team.all.map { $0.rawValue })
         teamBox.selectItem(at: 0)
     }
@@ -119,7 +122,7 @@ class ViewController: NSViewController {
     private func loadReviews(completion: @escaping () -> Void) {
         currentPage += 1
         
-        AppStore.current.getReviews(appID: .sberbankOnline, page: currentPage) { [unowned self] reviews in
+        AppStore.current.getReviews(appID: .sberbankOnline, page: startPage + currentPage) { [unowned self] reviews in
             guard self.currentPage <= self.pagesCount, !reviews.isEmpty else {
                 DispatchQueue.main.async {
                     completion()
