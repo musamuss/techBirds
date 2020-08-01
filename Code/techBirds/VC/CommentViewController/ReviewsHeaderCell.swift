@@ -29,7 +29,7 @@ class ReviewsHeaderCell: UITableViewCell {
     func configure(appName: String, rating: Double, metric: Double) {
         self.titleLabel.text = appName
         self.subtitleLabel.text = "\(String(format: "%.1f", rating)) из 5"
-        self.metricValueValue.text = "\(metric)%"
+        self.metricValueValue.text = "\(round(metric * 1000) / 1000)%"
     }
 }
 
