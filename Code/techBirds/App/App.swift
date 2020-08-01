@@ -13,6 +13,7 @@ class App {
     
     // Config
     private(set) var selectedTeam: Team = .undefined
+    private(set) var selectedApp: AppID = .sberbankOnline
     
     // Services
     let appStore = AppStoreService()
@@ -25,6 +26,10 @@ class App {
     
     func updateTeam(_ team: Team) {
         self.selectedTeam = team
+    }
+    
+    func updateApp(_ appID: AppID) {
+        self.selectedApp = appID
     }
 }
 

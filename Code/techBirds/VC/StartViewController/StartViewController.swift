@@ -65,7 +65,8 @@ extension StartViewController {
         
         if indexPath.section != 0 {
             rowSelected = indexPath.row
-            App.current.appStore.getReviews(appID: .sberbankOnline, page: 1) { (succses) in
+            let selectedApp = App.current.selectedApp
+            App.current.appStore.getReviews(appID: selectedApp, page: 1) { (succses) in
                 self.rewiew = succses
                 DispatchQueue.main.async {
                     self.performSegue(withIdentifier: "toComments", sender: self)

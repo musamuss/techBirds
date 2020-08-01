@@ -28,6 +28,17 @@ class CollectionTableViewCell: UITableViewCell {
 
 // MARK: - UICollectionViewDataSource
 extension CollectionTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        var currentApp: AppID = .sberbankOnline
+        switch indexPath.row {
+        case 0: currentApp = .sberbankOnline
+        case 1: currentApp = .sberKazahstan
+        case 2: currentApp = .sberBelorus
+        default: break
+        }
+        App.current.updateApp(currentApp)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return avalibleApps.count
     }

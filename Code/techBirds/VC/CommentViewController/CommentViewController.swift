@@ -89,7 +89,8 @@ extension CommentViewController: UITableViewDataSource {
 
 extension CommentViewController {
     func getAppInfo() {
-        App.current.appStore.getAppInfo(appID: .sberbankOnline) { [unowned self] info in
+        let currentApp = App.current.selectedApp
+        App.current.appStore.getAppInfo(appID: currentApp) { [unowned self] info in
             DispatchQueue.main.async {
                 self.appInfo = info
                 self.tableView.reloadData()
@@ -98,7 +99,8 @@ extension CommentViewController {
     }
     
     func getNewReviews(page: Int) {
-        App.current.appStore.getReviews(appID: .sberbankOnline, page: page) { [unowned self] newReviews in
+        let currentApp = App.current.selectedApp
+        App.current.appStore.getReviews(appID: currentApp, page: page) { [unowned self] newReviews in
             DispatchQueue.main.async {
                 self.reviews?.append(contentsOf: self.classifyReviews(newReviews))
                 self.tableView.reloadData()

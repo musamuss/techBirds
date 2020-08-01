@@ -85,6 +85,8 @@ class AppStoreService {
 
 enum AppID: Int {
     case sberbankOnline = 492224193
+    case sberKazahstan = 993084220
+    case sberBelorus = 1382598666
 }
 
 extension AppStoreService {
