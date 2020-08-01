@@ -193,7 +193,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ISI-cr-6qa"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Название команды" id="0Cr-pE-PDQ"/>
+                    <navigationItem key="navigationItem" title="Название команды" largeTitleDisplayMode="never" id="0Cr-pE-PDQ"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="quantityLabel" destination="c9H-GH-e46" id="Cbx-uX-GIz"/>
