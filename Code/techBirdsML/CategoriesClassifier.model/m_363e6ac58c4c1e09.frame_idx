@@ -1,0 +1,11 @@
+[sframe]
+version=0
+num_segments=0
+num_columns=2
+nrows=47
+[column_names]
+0000=review
+0001=category
+[column_files]
+0000=m_363e6ac58c4c1e09.sidx:0
+0001=m_363e6ac58c4c1e09.sidx:1

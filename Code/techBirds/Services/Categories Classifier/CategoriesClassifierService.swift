@@ -13,8 +13,7 @@ class CategoriesClassifierService {
     
     init() {
         do {
-            model = try CategoriesClassifier(configuration: configuration).model
-            predictor = try NLModel(mlModel: model)
+            classifier = try CategoriesClassifier(configuration: configuration)
         } catch let error {
             fatalError(error.localizedDescription)
         }
@@ -22,17 +21,42 @@ class CategoriesClassifierService {
     
     func classify(_ review: Review) -> Review {
         var review = review
-        
-        if let rawCategory = predictor.predictedLabel(for: review.text),
-           let category = Review.Category(rawValue: rawCategory) {
-            review.updateCategory(category)
-        }
                 
+        do {
+            let prefiction = try classifier.prediction(review: makeWordsFeatures(review.text))
+            print(prefiction.categoryProbability)
+            
+            if let category = Review.Category(rawValue: prefiction.category) {
+                review.updateCategory(category)
+            }
+                        
+        } catch let error {
+            fatalError(error.localizedDescription)
+        }
+
         return review
     }
     
-    private let model: MLModel
-    private let predictor: NLModel
-    
+    private let classifier: CategoriesClassifier
     private let configuration = MLModelConfiguration()
+}
+
+func makeWordsFeatures(_ text: String) -> [String: Double] {
+    var bagOfWords = [String: Double]()
+
+    let tagger = NSLinguisticTagger(tagSchemes: [.tokenType], options: 0)
+    let range = NSRange(location: 0, length: text.utf16.count)
+    let options: NSLinguisticTagger.Options = [.omitPunctuation, .omitWhitespace]
+    tagger.string = text.lowercased()
+
+    tagger.enumerateTags(in: range, unit: .word, scheme: .tokenType, options: options) { _, tokenRange, _ in
+        let word = (text as NSString).substring(with: tokenRange)
+        if bagOfWords[word] != nil {
+            bagOfWords[word]! += 1
+        } else {
+            bagOfWords[word] = 1
+        }
+    }
+
+    return bagOfWords
 }

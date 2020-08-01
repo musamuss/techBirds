@@ -1,0 +1,29 @@
+{
+	"sarray" : {
+		"version" : 2,
+		"num_segments" : 1
+	},
+	"segment_files" : {
+		"0000" : "m_363e6ac58c4c1e09.0000"
+	},
+	"columns" : [
+		{
+			"content_type" : "",
+			"metadata" : {
+				"__type__" : "5"
+			},
+			"segment_sizes" : {
+				"0000" : "47"
+			}
+		},
+		{
+			"content_type" : "",
+			"metadata" : {
+				"__type__" : "2"
+			},
+			"segment_sizes" : {
+				"0000" : "47"
+			}
+		}
+	]
+}
