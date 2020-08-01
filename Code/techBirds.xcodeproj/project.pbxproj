@@ -20,8 +20,9 @@
 		84FB37F024D495FA00DCD835 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FB37EF24D495FA00DCD835 /* UIView+Ext.swift */; };
 		84FB37F224D4B0D400DCD835 /* CollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FB37F124D4B0D400DCD835 /* CollectionTableViewCell.swift */; };
 		A56C3A9824D47C44001A4543 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56C3A9724D47C44001A4543 /* App.swift */; };
-		A56C3A9A24D47C9F001A4543 /* ClassifierService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56C3A9924D47C9F001A4543 /* ClassifierService.swift */; };
+		A56C3A9A24D47C9F001A4543 /* CategoriesClassifierService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56C3A9924D47C9F001A4543 /* CategoriesClassifierService.swift */; };
 		A56C3A9C24D47CBD001A4543 /* AppStoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56C3A9B24D47CBD001A4543 /* AppStoreService.swift */; };
+		A56C3AA024D49F88001A4543 /* CategoriesClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A56C3A9F24D49F88001A4543 /* CategoriesClassifier.mlmodel */; };
 		A5B3C60424D4A3860073E98B /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B3C60324D4A3860073E98B /* Review.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,8 +42,9 @@
 		84FB37EF24D495FA00DCD835 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		84FB37F124D4B0D400DCD835 /* CollectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTableViewCell.swift; sourceTree = "<group>"; };
 		A56C3A9724D47C44001A4543 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
-		A56C3A9924D47C9F001A4543 /* ClassifierService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassifierService.swift; sourceTree = "<group>"; };
+		A56C3A9924D47C9F001A4543 /* CategoriesClassifierService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesClassifierService.swift; sourceTree = "<group>"; };
 		A56C3A9B24D47CBD001A4543 /* AppStoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreService.swift; sourceTree = "<group>"; };
+		A56C3A9F24D49F88001A4543 /* CategoriesClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = CategoriesClassifier.mlmodel; sourceTree = "<group>"; };
 		A5B3C60324D4A3860073E98B /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -130,7 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				A56C3A9B24D47CBD001A4543 /* AppStoreService.swift */,
-				A56C3A9924D47C9F001A4543 /* ClassifierService.swift */,
+				A56C3AA124D49F9A001A4543 /* Categories Classifier */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -143,6 +145,15 @@
 				84951F7F24D4781700271113 /* SceneDelegate.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		A56C3AA124D49F9A001A4543 /* Categories Classifier */ = {
+			isa = PBXGroup;
+			children = (
+				A56C3A9924D47C9F001A4543 /* CategoriesClassifierService.swift */,
+				A56C3A9F24D49F88001A4543 /* CategoriesClassifier.mlmodel */,
+			);
+			path = "Categories Classifier";
 			sourceTree = "<group>";
 		};
 		A5B3C60524D4A38A0073E98B /* Models */ = {
@@ -225,12 +236,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84951F8224D4781700271113 /* ViewController.swift in Sources */,
+				A56C3A9A24D47C9F001A4543 /* CategoriesClassifierService.swift in Sources */,
 				84951F9A24D4877A00271113 /* CommentViewController.swift in Sources */,
 				A5B3C60424D4A3860073E98B /* Review.swift in Sources */,
 				A56C3A9A24D47C9F001A4543 /* ClassifierService.swift in Sources */,
 				84FB37ED24D4927400DCD835 /* AppsCollectionViewCell.swift in Sources */,
 				A56C3A9824D47C44001A4543 /* App.swift in Sources */,
 				84951F7E24D4781700271113 /* AppDelegate.swift in Sources */,
+				A56C3AA024D49F88001A4543 /* CategoriesClassifier.mlmodel in Sources */,
 				84FB37F224D4B0D400DCD835 /* CollectionTableViewCell.swift in Sources */,
 				84FB37F024D495FA00DCD835 /* UIView+Ext.swift in Sources */,
 				84951F8024D4781700271113 /* SceneDelegate.swift in Sources */,

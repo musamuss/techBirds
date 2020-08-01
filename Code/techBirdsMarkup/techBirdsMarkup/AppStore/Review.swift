@@ -1,9 +1,9 @@
 //
 //  Review.swift
-//  techBirds
+//  techBirdsMarkup
 //
 //  Created by Artem Belkov on 31.07.2020.
-//  Copyright © 2020 techBirds. All rights reserved.
+//  Copyright © 2020 Artem Belkov. All rights reserved.
 //
 
 import Foundation
@@ -19,6 +19,14 @@ struct Review {
     private(set) var category: Category = .undefined
     private(set) var team: Team = .undefined
 
+    var categoryMarkup: Markup {
+        .init(text: text, label: category.rawValue)
+    }
+    
+    var teamMarkup: Markup {
+        .init(text: text, label: team.rawValue)
+    }
+    
     mutating func updateCategory(_ category: Category) {
         self.category = category
     }
@@ -141,6 +149,11 @@ extension Review {
                 telecom
             ]
         }
+    }
+    
+    struct Markup: Encodable {
+        let text: String
+        let label: String
     }
 }
 

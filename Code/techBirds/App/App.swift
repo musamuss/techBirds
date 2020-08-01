@@ -12,5 +12,5 @@ class App {
     static let current = App()
     
     let appStore = AppStoreService()
-    let classifier = ClassifierService()
+    let categoriesClassifier = CategoriesClassifierService()
 }

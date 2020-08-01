@@ -1,39 +1,40 @@
 //
-//  AppStoreService.swift
-//  techBirds
+//  AppStore.swift
+//  techBirdsMarkup
 //
 //  Created by Artem Belkov on 31.07.2020.
-//  Copyright © 2020 techBirds. All rights reserved.
+//  Copyright © 2020 Artem Belkov. All rights reserved.
 //
 
 import Foundation
 
-class AppStoreService {
+class AppStore {
+    static let current = AppStore()
     
     func getReviews(appID: AppID, page: Int, completion: @escaping ([Review]) -> Void) {
         guard page > 0 else { fatalError("Page can't be negative") }
-        
+
         let url = reviewsEndpoint(appID: appID, page: page)
-        
+
         makeGetRequest(url: url, modelType: ReviewsFeed.self) { result in
             if case .success(let feed) = result {
                 completion(feed.reviews)
             }
         }
     }
-    
+
     // MARK: Private
     
     private let session = URLSession.shared
     private let decoder = JSONDecoder()
-    
+
     // MARK: Endpoints
     
     private func reviewsEndpoint(appID: AppID, page: Int) -> URL {
         let path = "https://itunes.apple.com/ru/rss/customerreviews/page=\(page)/id=\(appID.rawValue)/sortBy=mostRecent/json"
         return URL(string: path)!
     }
-    
+
     // MARK: Requests
     
     private func makeRequest<Model: Decodable>(_ type: RequestType, modelType: Model.Type, url: URL, completion: @escaping (Result<Model>) -> Void) {
@@ -44,15 +45,15 @@ class AppStoreService {
             fatalError("Not implemented")
         }
     }
-    
+
     private func makeGetRequest<Model: Decodable>(url: URL, modelType: Model.Type, completion: @escaping (Result<Model>) -> Void) {
         let task = session.dataTask(with: url) { [unowned self] data, response, error in
             if let error = error, data == nil {
                 completion(.failure(error))
             }
-            
+
             guard let data = data else { return }
-            
+
             do {
                 let model = try self.decoder.decode(Model.self, from: data)
                 completion(.success(model))
@@ -60,7 +61,7 @@ class AppStoreService {
                 fatalError(error.localizedDescription)
             }
         }
-        
+
         task.resume()
     }
 }
@@ -69,12 +70,12 @@ enum AppID: Int {
     case sberbankOnline = 492224193
 }
 
-extension AppStoreService {
+extension AppStore {
     enum Result<Model: Decodable> {
         case success(Model)
         case failure(Error)
     }
-    
+
     enum RequestType {
         case get
         case post
