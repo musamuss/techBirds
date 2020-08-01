@@ -28,10 +28,9 @@ class CommentsTableViewCell: UITableViewCell {
     
     func configure(review: Review) {
         self.nicknameLabel.text = review.author
-        self.dateLabel.text = "1"
+        self.dateLabel.text = review.team.rawValue
         self.descriptionLabel.text = review.text
         self.toneView.backgroundColor = .red
-        self.toneLabel.text = "лул"
+        self.toneLabel.text = review.category.rawValue
     }
-
 }
