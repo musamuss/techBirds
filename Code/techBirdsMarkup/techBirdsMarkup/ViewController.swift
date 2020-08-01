@@ -65,8 +65,8 @@ class ViewController: NSViewController {
     
     // MARK: Private
     
-    private let startPage = 3
-    private let reviewsCount = 200
+    private let startPage = 1
+    private let reviewsCount = 500
     private let reviewsPerPage = 50
     private var pagesCount: Int { reviewsCount / reviewsPerPage }
     

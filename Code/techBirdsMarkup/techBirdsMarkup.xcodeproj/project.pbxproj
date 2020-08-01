@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84738CA924D5EA2900291F9E /* reviews_data.json in Resources */ = {isa = PBXBuildFile; fileRef = 84738CA824D5EA2900291F9E /* reviews_data.json */; };
 		A5B3C61324D4B3210073E98B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B3C61224D4B3210073E98B /* AppDelegate.swift */; };
 		A5B3C61524D4B3210073E98B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B3C61424D4B3210073E98B /* ViewController.swift */; };
 		A5B3C61724D4B3240073E98B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5B3C61624D4B3240073E98B /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		84738CA824D5EA2900291F9E /* reviews_data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = reviews_data.json; sourceTree = "<group>"; };
 		A5B3C60F24D4B3210073E98B /* techBirdsMarkup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = techBirdsMarkup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5B3C61224D4B3210073E98B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5B3C61424D4B3210073E98B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 				A5B3C61424D4B3210073E98B /* ViewController.swift */,
 				A5B3C61624D4B3240073E98B /* Assets.xcassets */,
 				A5B3C61824D4B3240073E98B /* Main.storyboard */,
+				84738CA824D5EA2900291F9E /* reviews_data.json */,
 				A5B3C61B24D4B3240073E98B /* Info.plist */,
 				A5B3C61C24D4B3240073E98B /* techBirdsMarkup.entitlements */,
 			);
@@ -137,6 +140,7 @@
 			files = (
 				A5B3C61724D4B3240073E98B /* Assets.xcassets in Resources */,
 				A5B3C61A24D4B3240073E98B /* Main.storyboard in Resources */,
+				84738CA924D5EA2900291F9E /* reviews_data.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,7 +292,7 @@
 				CODE_SIGN_ENTITLEMENTS = techBirdsMarkup/techBirdsMarkup.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = CT884K7983;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = techBirdsMarkup/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -308,7 +312,7 @@
 				CODE_SIGN_ENTITLEMENTS = techBirdsMarkup/techBirdsMarkup.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = CT884K7983;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = techBirdsMarkup/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
