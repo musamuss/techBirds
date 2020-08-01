@@ -66,17 +66,21 @@ class ViewController: NSViewController {
     }
     
     private func saveMarkups(_ markups: [Review.Markup], for name: String) {
-        guard let url = try? FileManager.default.url(
-            for: .downloadsDirectory,
-            in: .userDomainMask,
-            appropriateFor: nil,
-            create: false
-        ).appendingPathComponent(name) else {
-            return
+        do {
+            guard let url = try? FileManager.default.url(
+                for: .downloadsDirectory,
+                in: .userDomainMask,
+                appropriateFor: nil,
+                create: false
+            ).appendingPathComponent(name) else {
+                return
+            }
+            
+            let data = try encoder.encode(markups)
+            try data.write(to: url)
+        } catch let error {
+            fatalError(error.localizedDescription)
         }
-        
-        let data = try? encoder.encode(markups)
-        try? data?.write(to: url)
     }
 
     // MARK: Loading
