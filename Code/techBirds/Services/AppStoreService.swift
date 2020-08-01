@@ -10,6 +10,16 @@ import Foundation
 
 class AppStoreService {
     
+    func getAppInfo(appID: AppID, completion: @escaping (AppInfo) -> Void) {
+        let url = appInfoEndpoint(appID: appID)
+        
+        makeGetRequest(url: url, modelType: SearchResults.self) { result in
+            if case .success(let results) = result {
+                completion(results.appsInfo.first!)
+            }
+        }
+    }
+    
     func getReviews(appID: AppID, page: Int, completion: @escaping ([Review]) -> Void) {
         guard page > 0 else { fatalError("Page can't be negative") }
         
@@ -28,6 +38,11 @@ class AppStoreService {
     private let decoder = JSONDecoder()
     
     // MARK: Endpoints
+    
+    private func appInfoEndpoint(appID: AppID) -> URL {
+        let path = "https://itunes.apple.com/lookup?id=\(appID.rawValue)"
+        return URL(string: path)!
+    }
     
     private func reviewsEndpoint(appID: AppID, page: Int) -> URL {
         let path = "https://itunes.apple.com/ru/rss/customerreviews/page=\(page)/id=\(appID.rawValue)/sortBy=mostRecent/json"

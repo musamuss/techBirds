@@ -12,9 +12,18 @@ class CommentViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    var appInfo: AppInfo?
+    
     var reviews: [Review]?
     var teamReviews: [Review] {
         (reviews ?? []).filter { $0.team == App.current.selectedTeam }
+    }
+    
+    var metric: Double {
+        let reviews = self.reviews ?? []
+        let likeReviews = reviews.filter { $0.category == .like }
+        
+        return Double(likeReviews.count) / Double(reviews.count)
     }
     
     var isDataLoading = false
@@ -22,7 +31,9 @@ class CommentViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.reviews = classifiedReviews(reviews: reviews ?? [])
+        
+        self.getAppInfo()
+        self.reviews = classifyReviews(reviews ?? [])
     }
 }
 // MARK: - UITableViewDelegate
@@ -53,7 +64,11 @@ extension CommentViewController: UITableViewDataSource {
                 return defaultCell
             }
             
-            cell.configure(appName: "Сбербанк Онлайн", rating: 2, metric: "дней без прорыва")
+            cell.configure(
+                appName: appInfo?.name ?? "Сбербанк Онлайн",
+                rating: appInfo?.rating ?? 5,
+                metric: metric
+            )
             
             return cell
             
@@ -73,17 +88,25 @@ extension CommentViewController: UITableViewDataSource {
 }
 
 extension CommentViewController {
-    func getNewData(page: Int) {
-        App.current.appStore.getReviews(appID: .sberbankOnline, page: page) { (succses) in
+    func getAppInfo() {
+        App.current.appStore.getAppInfo(appID: .sberbankOnline) { [unowned self] info in
             DispatchQueue.main.async {
-                let responce = self.classifiedReviews(reviews: succses)
-                self.reviews?.append(contentsOf: responce)
+                self.appInfo = info
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    func getNewReviews(page: Int) {
+        App.current.appStore.getReviews(appID: .sberbankOnline, page: page) { [unowned self] newReviews in
+            DispatchQueue.main.async {
+                self.reviews?.append(contentsOf: self.classifyReviews(newReviews))
                 self.tableView.reloadData()
             }
         }
     }
 
-    func classifiedReviews(reviews: [Review]) -> [Review] {
+    func classifyReviews(_ reviews: [Review]) -> [Review] {
         return reviews.map { review in
             var classifiedReview: Review
             classifiedReview = App.current.categoriesClassifier.classify(review)
@@ -106,7 +129,7 @@ extension CommentViewController: UIScrollViewDelegate {
             if !isDataLoading{
                 isDataLoading = true
                 self.pageNo=self.pageNo+1
-                getNewData(page: self.pageNo)
+                getNewReviews(page: self.pageNo)
             }
         }
     }
