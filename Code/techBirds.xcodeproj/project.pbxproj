@@ -27,6 +27,7 @@
 		A5B3C62A24D55B8D0073E98B /* TeamsClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A5B3C62924D55B8D0073E98B /* TeamsClassifier.mlmodel */; };
 		A5B3C62D24D55BB10073E98B /* TeamsClassifierService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B3C62C24D55BB10073E98B /* TeamsClassifierService.swift */; };
 		A5B3C63024D55FF40073E98B /* CategoriesClassifierService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56C3A9924D47C9F001A4543 /* CategoriesClassifierService.swift */; };
+		A5B3C63224D56E1D0073E98B /* ReviewsHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B3C63124D56E1D0073E98B /* ReviewsHeaderCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		A5B3C62724D55B5E0073E98B /* CategoriesClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = CategoriesClassifier.mlmodel; sourceTree = "<group>"; };
 		A5B3C62924D55B8D0073E98B /* TeamsClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = TeamsClassifier.mlmodel; sourceTree = "<group>"; };
 		A5B3C62C24D55BB10073E98B /* TeamsClassifierService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsClassifierService.swift; sourceTree = "<group>"; };
+		A5B3C63124D56E1D0073E98B /* ReviewsHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsHeaderCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 				84951F9724D4875800271113 /* CommentViewController.storyboard */,
 				84951F9924D4877A00271113 /* CommentViewController.swift */,
 				2DBD24FB24D4A0FF002DFFAE /* CommentsTableViewCell.swift */,
+				A5B3C63124D56E1D0073E98B /* ReviewsHeaderCell.swift */,
 			);
 			path = CommentViewController;
 			sourceTree = "<group>";
@@ -275,6 +278,7 @@
 				84FB37F024D495FA00DCD835 /* UIView+Ext.swift in Sources */,
 				84951F8024D4781700271113 /* SceneDelegate.swift in Sources */,
 				2DBD24FC24D4A0FF002DFFAE /* CommentsTableViewCell.swift in Sources */,
+				A5B3C63224D56E1D0073E98B /* ReviewsHeaderCell.swift in Sources */,
 				A5B3C62824D55B5F0073E98B /* CategoriesClassifier.mlmodel in Sources */,
 				845863EA24D547620030DD9F /* CommandsTableViewCell.swift in Sources */,
 				A56C3A9C24D47CBD001A4543 /* AppStoreService.swift in Sources */,

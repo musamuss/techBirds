@@ -11,12 +11,12 @@ import UIKit
 class CommentViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var ratingLabel: UILabel!
-    @IBOutlet weak var quantityLabel: UILabel!
-    @IBOutlet weak var withoutNegativeLabel: UILabel!
     
     var reviews: [Review]?
-    var teamReviews: [Review] = []
+    var teamReviews: [Review] {
+        (reviews ?? []).filter { $0.team == App.current.selectedTeam }
+    }
+    
     var isDataLoading = false
     var pageNo = 1
     
@@ -24,25 +24,51 @@ class CommentViewController: UIViewController {
         super.viewDidLoad()
         self.reviews = classifiedReviews(reviews: reviews ?? [])
     }
-
 }
 // MARK: - UITableViewDelegate
 extension CommentViewController: UITableViewDelegate {
     
 }
+
 // MARK: - UITableViewDataSource
 extension CommentViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let reviews = reviews else { return 0 }
-        return reviews.count
+        switch Section(rawValue: section) {
+        case .header: return 1
+        case .reviews: return teamReviews.count
+        default: return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell", for: indexPath) as? CommentsTableViewCell, let reviews = reviews {
-            cell.configure(review: reviews[indexPath.row])
+        let defaultCell = UITableViewCell()
+        
+        switch Section(rawValue: indexPath.section) {
+        case .header:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell", for: indexPath) as? ReviewsHeaderCell else {
+                return defaultCell
+            }
+            
+            cell.configure(appName: "Сбербанк Онлайн", rating: 2, metric: "дней без прорыва")
+            
             return cell
+            
+        case .reviews:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell", for: indexPath) as? CommentsTableViewCell else {
+                return defaultCell
+            }
+            
+            cell.configure(review: teamReviews[indexPath.row])
+            
+            return cell
+            
+        default:
+            return defaultCell
         }
-        return UITableViewCell()
     }
 }
 
@@ -56,7 +82,7 @@ extension CommentViewController {
             }
         }
     }
-    
+
     func classifiedReviews(reviews: [Review]) -> [Review] {
         return reviews.map { review in
             var classifiedReview: Review
@@ -69,22 +95,26 @@ extension CommentViewController {
 
 extension CommentViewController: UIScrollViewDelegate {
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-
         print("scrollViewWillBeginDragging")
+        
         isDataLoading = false
     }
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-
-            print("scrollViewDidEndDragging")
-            if ((tableView.contentOffset.y + tableView.frame.size.height) >= tableView.contentSize.height)
-            {
-                if !isDataLoading{
-                    isDataLoading = true
-                    self.pageNo=self.pageNo+1
-                    getNewData(page: self.pageNo)
-                }
+        print("scrollViewDidEndDragging")
+        
+        if ((tableView.contentOffset.y + tableView.frame.size.height) >= tableView.contentSize.height) {
+            if !isDataLoading{
+                isDataLoading = true
+                self.pageNo=self.pageNo+1
+                getNewData(page: self.pageNo)
             }
+        }
+    }
+}
 
-
+extension CommentViewController {
+    enum Section: Int {
+        case header
+        case reviews
     }
 }
