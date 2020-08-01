@@ -28,7 +28,7 @@ class ReviewsHeaderCell: UITableViewCell {
     
     func configure(appName: String, rating: Double, metric: Double) {
         self.titleLabel.text = appName
-        self.subtitleLabel.text = "\(rating) из 5"
+        self.subtitleLabel.text = "\(String(format: "%.1f", rating)) из 5"
         self.metricValueValue.text = "\(metric)%"
     }
 }
