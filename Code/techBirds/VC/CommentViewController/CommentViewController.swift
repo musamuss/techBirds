@@ -35,9 +35,11 @@ extension CommentViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell", for: indexPath) as! CommentsTableViewCell
-        
-        return cell
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell", for: indexPath) as? CommentsTableViewCell, let review = review {
+            cell.configure(review: review[indexPath.row])
+            return cell
+        }
+        return UITableViewCell()
     }
     
     

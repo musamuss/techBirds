@@ -26,12 +26,12 @@ class CommentsTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configure(nickname: String, date: String, description: String, toneBackgroundColor: UIColor, toneLabel: String) {
-        self.nicknameLabel.text = nickname
-        self.dateLabel.text = date
-        self.descriptionLabel.text = description
-        self.toneView.backgroundColor = toneBackgroundColor
-        self.toneLabel.text = toneLabel
+    func configure(review: Review) {
+        self.nicknameLabel.text = review.author
+        self.dateLabel.text = "1"
+        self.descriptionLabel.text = review.text
+        self.toneView.backgroundColor = .red
+        self.toneLabel.text = "лул"
     }
 
 }
