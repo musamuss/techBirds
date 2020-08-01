@@ -161,7 +161,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="BVO-ca-2oe"/>
                     <connections>
-                        <segue destination="Mgx-Kh-bJV" kind="show" id="flp-8M-5U8"/>
+                        <segue destination="Mgx-Kh-bJV" kind="show" identifier="toComments" id="HZ4-SN-obb"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jT6-uu-0BN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -172,7 +172,7 @@
         <scene sceneID="t4Y-6b-mrq">
             <objects>
                 <viewControllerPlaceholder storyboardName="CommentViewController" id="Mgx-Kh-bJV" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="I4E-sH-vEd"/>
+                    <navigationItem key="navigationItem" id="vp3-JD-V1H"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bFR-jh-wzl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

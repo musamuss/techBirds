@@ -12,6 +12,8 @@ class CommentsTableViewCell: UITableViewCell {
     @IBOutlet weak var nicknameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var toneView: UIView!
+    @IBOutlet weak var toneLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
