@@ -9,7 +9,10 @@
 import UIKit
 
 class CollectionTableViewCell: UITableViewCell {
-
+    
+    let avalibleApps = [UIImage(named: "sberLogo"), UIImage(named: "sberKZ")]
+    let avalibleTitles = ["Сбербанк","Сбербанк Казахстан"]
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -26,12 +29,15 @@ class CollectionTableViewCell: UITableViewCell {
 // MARK: - UICollectionViewDataSource
 extension CollectionTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return avalibleApps.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath)
-        return cell
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath) as? AppsCollectionViewCell {
+            cell.configure(with: avalibleApps[indexPath.row], and: avalibleTitles[indexPath.row])
+            return cell
+        }
+        return UICollectionViewCell()
     }
     
 }

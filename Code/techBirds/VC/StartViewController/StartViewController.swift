@@ -10,9 +10,11 @@ import UIKit
 
 class StartViewController: UITableViewController {
 
+    let avalibleTeam = Review.Team.all
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        performSegue(withIdentifier: "toComments", sender: Any.self)
+        navigationItem.title = "Команды"
         // Do any additional setup after loading the view.
     }
 
@@ -29,7 +31,7 @@ extension StartViewController {
         super.tableView(tableView, numberOfRowsInSection: section)
         switch section {
         case 0: return 1
-        case 1: return 10
+        case 1: return avalibleTeam.count
         default: return 0
         }
     }
@@ -39,9 +41,12 @@ extension StartViewController {
             
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "commandCell", for: indexPath)
-            return cell
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "commandCell", for: indexPath) as? CommandsTableViewCell {
+                cell.configure(with: avalibleTeam[indexPath.row].rawValue)
+                return cell
+            }
         }
+        return UITableViewCell()
     }
 }
 
