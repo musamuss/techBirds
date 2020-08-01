@@ -20,10 +20,9 @@ class CommentViewController: UIViewController {
     }
     
     var metric: Double {
-        let reviews = self.reviews ?? []
-        let likeReviews = reviews.filter { $0.category == .like }
+        let likeReviews = teamReviews.filter { ($0.category == .like) && ($0.category == .proposal) }
         
-        return Double(likeReviews.count) / Double(reviews.count)
+        return Double(likeReviews.count) / Double(teamReviews.count)
     }
     
     var isDataLoading = false

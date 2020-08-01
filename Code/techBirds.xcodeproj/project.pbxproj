@@ -23,6 +23,7 @@
 		A52EDC2824D5804A00AFDBE8 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52EDC2724D5804A00AFDBE8 /* AppInfo.swift */; };
 		A5414E0A24D59C4700862461 /* TeamsClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A5414E0924D59C4700862461 /* TeamsClassifier.mlmodel */; };
 		A5414E0C24D59C4D00862461 /* CategoriesClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A5414E0B24D59C4D00862461 /* CategoriesClassifier.mlmodel */; };
+		A5414E0E24D5A48900862461 /* reviews_data.json in Resources */ = {isa = PBXBuildFile; fileRef = A5414E0D24D5A48900862461 /* reviews_data.json */; };
 		A56C3A9824D47C44001A4543 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56C3A9724D47C44001A4543 /* App.swift */; };
 		A56C3A9C24D47CBD001A4543 /* AppStoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56C3A9B24D47CBD001A4543 /* AppStoreService.swift */; };
 		A5B3C60424D4A3860073E98B /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B3C60324D4A3860073E98B /* Review.swift */; };
@@ -50,6 +51,7 @@
 		A52EDC2724D5804A00AFDBE8 /* AppInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
 		A5414E0924D59C4700862461 /* TeamsClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = TeamsClassifier.mlmodel; sourceTree = "<group>"; };
 		A5414E0B24D59C4D00862461 /* CategoriesClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = CategoriesClassifier.mlmodel; sourceTree = "<group>"; };
+		A5414E0D24D5A48900862461 /* reviews_data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = reviews_data.json; sourceTree = "<group>"; };
 		A56C3A9724D47C44001A4543 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		A56C3A9924D47C9F001A4543 /* CategoriesClassifierService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesClassifierService.swift; sourceTree = "<group>"; };
 		A56C3A9B24D47CBD001A4543 /* AppStoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreService.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				84951F8624D4781B00271113 /* Assets.xcassets */,
 				84951F8824D4781B00271113 /* LaunchScreen.storyboard */,
 				84951F8B24D4781B00271113 /* Info.plist */,
+				A5BCCA0224D5A53000F5BC15 /* Resources */,
 			);
 			path = techBirds;
 			sourceTree = "<group>";
@@ -197,6 +200,14 @@
 			name = "Recovered References";
 			sourceTree = "<group>";
 		};
+		A5BCCA0224D5A53000F5BC15 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A5414E0D24D5A48900862461 /* reviews_data.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -257,6 +268,7 @@
 			files = (
 				84951F8A24D4781B00271113 /* LaunchScreen.storyboard in Resources */,
 				84951F8724D4781B00271113 /* Assets.xcassets in Resources */,
+				A5414E0E24D5A48900862461 /* reviews_data.json in Resources */,
 				84951F9824D4875800271113 /* CommentViewController.storyboard in Resources */,
 				84951F8524D4781700271113 /* Main.storyboard in Resources */,
 			);

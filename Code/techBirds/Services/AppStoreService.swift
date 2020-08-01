@@ -21,8 +21,17 @@ class AppStoreService {
     }
     
     func getReviews(appID: AppID, page: Int, completion: @escaping ([Review]) -> Void) {
-        guard page > 0 && page < 10 else { print("Page can't be negative")
+        guard page > 0 else {
             completion([])
+            return
+        }
+        
+        guard page < 10 else {
+            let startIndex = (page - 10) * 50
+            let lastIndex = startIndex + 50
+
+            let reviews = additionalReviews[startIndex...lastIndex]
+            completion(Array(reviews))
             return
         }
         
@@ -81,6 +90,36 @@ class AppStoreService {
         
         task.resume()
     }
+    
+    // MARK: Additional data
+    
+    private lazy var additionalReviews: [Review] = {
+        guard let path = Bundle.main.path(forResource: "reviews_data", ofType: "json"),
+            let data = try? Data(contentsOf: URL(fileURLWithPath: path)),
+            let rawReviews = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [[String: Any]] else {
+            return []
+        }
+        
+        let reviews: [Review] = rawReviews.compactMap { raw in
+            guard
+                let author = raw["author"] as? String,
+                let ratingString = raw["rating"] as? String,
+                let rating = Int(ratingString),
+                let title = raw["title"] as? String,
+                let content = raw["content"] as? String else {
+                return nil
+            }
+
+            return .init(
+                author: author,
+                rating: rating,
+                title: title,
+                content: content
+            )
+        }
+        
+        return reviews
+    }()
 }
 
 enum AppID: Int {
