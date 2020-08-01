@@ -21,7 +21,10 @@ class AppStoreService {
     }
     
     func getReviews(appID: AppID, page: Int, completion: @escaping ([Review]) -> Void) {
-        guard page > 0 else { fatalError("Page can't be negative") }
+        guard page > 0 && page < 10 else { print("Page can't be negative")
+            completion([])
+            return
+        }
         
         let url = reviewsEndpoint(appID: appID, page: page)
         
