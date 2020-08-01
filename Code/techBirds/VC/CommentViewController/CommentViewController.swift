@@ -14,6 +14,7 @@ class CommentViewController: UIViewController {
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var quantityLabel: UILabel!
     @IBOutlet weak var withoutNegativeLabel: UILabel!
+    var review: [Review]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +30,8 @@ extension CommentViewController: UITableViewDelegate {
 // MARK: - UITableViewDataSource
 extension CommentViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        guard let review = review else { return 0 }
+        return review.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
