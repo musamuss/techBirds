@@ -14,9 +14,19 @@ struct Review {
     let title: String
     let content: String
     
+    var text: String { "\(title) \(content)" }
+    
     private(set) var category: Category = .undefined
     private(set) var team: Team = .undefined
 
+    var categoryMarkup: Markup {
+        .init(text: text, label: category.rawValue)
+    }
+    
+    var teamMarkup: Markup {
+        .init(text: text, label: team.rawValue)
+    }
+    
     mutating func updateCategory(_ category: Category) {
         self.category = category
     }
@@ -25,15 +35,25 @@ struct Review {
         self.team = team
     }
 }
- 
+
 extension Review {
-    enum Category {
+    enum Category: String {
         case bug
         case trouble
         case hate
         case proposal
         case like
         case undefined
+        
+        static var all: [Category] {
+            [
+                bug,
+                trouble,
+                hate,
+                proposal,
+                like
+            ]
+        }
     }
     
     enum Team: String, Encodable {
@@ -130,18 +150,10 @@ extension Review {
             ]
         }
     }
-}
-
-extension Review: Encodable {
-    enum EncodingKeys: CodingKey {
-        case text, label
-    }
     
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: EncodingKeys.self)
-      
-        try container.encode("\(title) \(content)", forKey: .text)
-        try container.encode(team, forKey: .label)
+    struct Markup: Encodable {
+        let text: String
+        let label: String
     }
 }
 

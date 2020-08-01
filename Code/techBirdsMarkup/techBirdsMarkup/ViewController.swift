@@ -14,10 +14,18 @@ class ViewController: NSViewController {
     @IBOutlet weak var ratingField: NSTextField!
     @IBOutlet weak var reviewField: NSTextField!
     
-    @IBOutlet weak var parameterBox: NSComboBox!
+    @IBOutlet weak var teamBox: NSComboBox!
+    @IBOutlet weak var categoryBox: NSComboBox!
     @IBOutlet weak var indicator: NSProgressIndicator!
     
-    private let pagesCount = 100 / 50
+    private let reviewsCount = 100
+    private let reviewsPerPage = 50
+    private var pagesCount: Int { reviewsCount / reviewsPerPage }
+    
+    private let categoryName = "category_dataset.json"
+    private let teamName = "team_dataset.json"
+
+    private let encoder = JSONEncoder()
     
     private var currentPage = 0
     private var reviews: [Review] = []
@@ -27,8 +35,9 @@ class ViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        parameterBox.removeAllItems()
-
+        categoryBox.removeAllItems()
+        teamBox.removeAllItems()
+            
         indicator.startAnimation(self)
         indicator.isHidden = false
         loadReviews { [unowned self] in
@@ -47,10 +56,27 @@ class ViewController: NSViewController {
         progressField.stringValue = "\(currentReview + 1)/\(reviews.count)"
         usernameField.stringValue = review.author
         ratingField.stringValue = String(repeating: "⭐️", count: review.rating)
-        reviewField.stringValue = review.title + " " + review.content
+        reviewField.stringValue = review.text
+
+        categoryBox.addItems(withObjectValues: Review.Category.all.map { $0.rawValue })
+        categoryBox.selectItem(at: 0)
         
-        parameterBox.addItems(withObjectValues: Review.Team.all.map { $0.rawValue })
-        parameterBox.selectItem(at: 0)
+        teamBox.addItems(withObjectValues: Review.Team.all.map { $0.rawValue })
+        teamBox.selectItem(at: 0)
+    }
+    
+    private func saveMarkups(_ markups: [Review.Markup], for name: String) {
+        guard let url = try? FileManager.default.url(
+            for: .downloadsDirectory,
+            in: .userDomainMask,
+            appropriateFor: nil,
+            create: false
+        ).appendingPathComponent(name) else {
+            return
+        }
+        
+        let data = try? encoder.encode(markups)
+        try? data?.write(to: url)
     }
 
     // MARK: Loading
@@ -74,19 +100,30 @@ class ViewController: NSViewController {
     // MARK: Actions
     
     @IBAction func nextReviewTapped(_ sender: Any) {
-        guard
-            let rawValue = parameterBox.itemObjectValue(at: parameterBox.indexOfSelectedItem) as? String,
-            let team = Review.Team(rawValue: rawValue) else {
-            return
+        if let rawValue = teamBox.itemObjectValue(at: teamBox.indexOfSelectedItem) as? String,
+           let team = Review.Team(rawValue: rawValue) {
+            reviews[currentReview].updateTeam(team)
         }
         
-        reviews[currentReview].updateTeam(team)
-        
+        if let rawValue = categoryBox.itemObjectValue(at: categoryBox.indexOfSelectedItem) as? String,
+           let category = Review.Category(rawValue: rawValue) {
+            reviews[currentReview].updateCategory(category)
+        }
+                
         currentReview += 1
         showReview(for: currentReview)
     }
     
     @IBAction func saveDataSetTapped(_ sender: Any) {
+        let filteredCategories = reviews
+            .filter { $0.category != .undefined }
+            .map { $0.categoryMarkup }
+        saveMarkups(filteredCategories, for: categoryName)
+        
+        let filteredTeams = reviews
+            .filter { $0.team != .undefined }
+            .map { $0.teamMarkup }
+        saveMarkups(filteredTeams, for: teamName)
     }
 }
 

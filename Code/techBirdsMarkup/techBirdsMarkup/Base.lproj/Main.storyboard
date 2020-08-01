@@ -684,7 +684,7 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Markup Reviews" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="540" height="270"/>
@@ -701,16 +701,16 @@
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
-        <!--Markup Reviews-->
+        <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController title="Markup Reviews" id="XfG-lQ-9wD" customClass="ViewController" customModule="techBirdsMarkup" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="techBirdsMarkup" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="540" height="162"/>
+                        <rect key="frame" x="0.0" y="0.0" width="540" height="197"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2hX-PV-0Qd">
-                                <rect key="frame" x="18" y="123" width="374" height="19"/>
+                                <rect key="frame" x="18" y="158" width="374" height="19"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="username" id="A2c-Ot-j1g">
                                     <font key="font" metaFont="systemBold" size="16"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -718,7 +718,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BA9-c0-QWk">
-                                <rect key="frame" x="18" y="92" width="51" height="21"/>
+                                <rect key="frame" x="18" y="127" width="51" height="21"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="rating" id="JZT-dz-jdx">
                                     <font key="font" metaFont="system" size="18"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -727,15 +727,10 @@
                             </textField>
                             <comboBox verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oBj-t9-Sav">
                                 <rect key="frame" x="20" y="16" width="261" height="25"/>
-                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="qui-zQ-6YU">
+                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Team" drawsBackground="YES" completes="NO" numberOfVisibleItems="44" id="qui-zQ-6YU">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <objectValues>
-                                        <string>Item 1</string>
-                                        <string>Item 2</string>
-                                        <string>Item 3</string>
-                                    </objectValues>
                                 </comboBoxCell>
                             </comboBox>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0HX-6W-lpa">
@@ -749,7 +744,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QdD-L3-bpT">
-                                <rect key="frame" x="404" y="114" width="122" height="32"/>
+                                <rect key="frame" x="404" y="149" width="122" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="110" id="SLB-od-0qx"/>
                                 </constraints>
@@ -762,7 +757,7 @@
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lc4-mF-S5P">
-                                <rect key="frame" x="441" y="95" width="21" height="16"/>
+                                <rect key="frame" x="441" y="130" width="21" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="1/1" id="ZAZ-U9-PlB">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -770,26 +765,36 @@
                                 </textFieldCell>
                             </textField>
                             <progressIndicator wantsLayer="YES" maxValue="100" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="7HX-n4-Adz">
-                                <rect key="frame" x="262" y="73" width="16" height="16"/>
+                                <rect key="frame" x="262" y="91" width="16" height="16"/>
                             </progressIndicator>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="ddS-rX-7Rn">
-                                <rect key="frame" x="18" y="61" width="504" height="21"/>
+                                <rect key="frame" x="18" y="96" width="504" height="21"/>
                                 <textFieldCell key="cell" selectable="YES" title="review" id="r86-0w-Rc3">
                                     <font key="font" metaFont="system" size="18"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <comboBox verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tyb-JP-LEB">
+                                <rect key="frame" x="20" y="45" width="116" height="25"/>
+                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Category" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="u8H-Ei-tep">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </comboBoxCell>
+                            </comboBox>
                         </subviews>
                         <constraints>
                             <constraint firstItem="QdD-L3-bpT" firstAttribute="leading" secondItem="2hX-PV-0Qd" secondAttribute="trailing" constant="20" id="2re-6U-0iz"/>
+                            <constraint firstItem="tyb-JP-LEB" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="51w-bt-jAV"/>
                             <constraint firstAttribute="trailing" secondItem="0HX-6W-lpa" secondAttribute="trailing" constant="20" id="9qs-n1-TBE"/>
+                            <constraint firstItem="oBj-t9-Sav" firstAttribute="top" secondItem="tyb-JP-LEB" secondAttribute="bottom" constant="10" id="B8P-FO-C6N"/>
                             <constraint firstItem="7HX-n4-Adz" firstAttribute="centerY" secondItem="m2S-Jp-Qdl" secondAttribute="centerY" id="NpE-OR-5fD"/>
                             <constraint firstAttribute="trailing" secondItem="ddS-rX-7Rn" secondAttribute="trailing" constant="20" id="SOl-7z-f7E"/>
                             <constraint firstAttribute="bottom" secondItem="0HX-6W-lpa" secondAttribute="bottom" constant="20" id="TJD-O1-oCH"/>
                             <constraint firstItem="7HX-n4-Adz" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="VUn-RG-lmb"/>
                             <constraint firstItem="ddS-rX-7Rn" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="XoF-fB-Ix4"/>
-                            <constraint firstItem="0HX-6W-lpa" firstAttribute="top" secondItem="ddS-rX-7Rn" secondAttribute="bottom" constant="20" id="YZ2-8w-NxT"/>
+                            <constraint firstItem="0HX-6W-lpa" firstAttribute="top" secondItem="ddS-rX-7Rn" secondAttribute="bottom" constant="55" id="YZ2-8w-NxT"/>
                             <constraint firstItem="2hX-PV-0Qd" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="aI4-WK-0HC"/>
                             <constraint firstItem="QdD-L3-bpT" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="bgl-7E-vd5"/>
                             <constraint firstAttribute="trailing" secondItem="lc4-mF-S5P" secondAttribute="trailing" constant="20" id="bxl-wN-UcM"/>
@@ -805,17 +810,18 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="categoryBox" destination="tyb-JP-LEB" id="1LA-Y9-qYA"/>
                         <outlet property="indicator" destination="7HX-n4-Adz" id="LEU-uC-vop"/>
-                        <outlet property="parameterBox" destination="oBj-t9-Sav" id="HD2-Cg-uVk"/>
                         <outlet property="progressField" destination="lc4-mF-S5P" id="c2r-3s-qbN"/>
                         <outlet property="ratingField" destination="BA9-c0-QWk" id="wrf-vZ-3Ue"/>
                         <outlet property="reviewField" destination="ddS-rX-7Rn" id="Ked-OF-zBo"/>
+                        <outlet property="teamBox" destination="oBj-t9-Sav" id="HD2-Cg-uVk"/>
                         <outlet property="usernameField" destination="2hX-PV-0Qd" id="9kg-YK-YhZ"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="655"/>
+            <point key="canvasLocation" x="75" y="654.5"/>
         </scene>
     </scenes>
 </document>
