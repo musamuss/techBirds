@@ -17,7 +17,8 @@ class CommentsTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        toneView.layer.cornerRadius = toneView.bounds.height / 2
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -30,7 +31,31 @@ class CommentsTableViewCell: UITableViewCell {
         self.nicknameLabel.text = review.author
         self.dateLabel.text = review.team.rawValue
         self.descriptionLabel.text = review.text
-        self.toneView.backgroundColor = .red
-        self.toneLabel.text = review.category.rawValue
+        self.toneView.backgroundColor = review.category.color
+        self.toneLabel.text = review.category.title
+    }
+}
+
+private extension Review.Category {
+    var title: String {
+        switch self {
+        case .bug: return "🐛 Баг"
+        case .comment: return "⛔️ Замечание"
+        case .like: return "🎉 Похвала"
+        case .proposal: return "🚀 Предложение"
+        case .question: return "❓ Вопрос"
+        default: return "💔 Неопределено"
+        }
+    }
+    
+    var color: UIColor {
+        switch self {
+        case .bug: return #colorLiteral(red: 1, green: 0.4588235294, blue: 0.4588235294, alpha: 1)
+        case .comment: return #colorLiteral(red: 1, green: 0.8745098039, blue: 0.4196078431, alpha: 1)
+        case .like: return #colorLiteral(red: 0.6078431373, green: 0.9294117647, blue: 0.5058823529, alpha: 1)
+        case .proposal: return #colorLiteral(red: 0.6078431373, green: 0.9294117647, blue: 0.5058823529, alpha: 1)
+        case .question: return #colorLiteral(red: 1, green: 0.8745098039, blue: 0.4196078431, alpha: 1)
+        default: return #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        }
     }
 }

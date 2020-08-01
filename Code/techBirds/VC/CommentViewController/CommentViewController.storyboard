@@ -18,7 +18,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gmm-GM-BWR">
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="headerCell" rowHeight="230" id="hgV-gw-K8t" customClass="ReviewsHeaderCell" customModule="techBirds" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="headerCell" rowHeight="230" id="hgV-gw-K8t" customClass="ReviewsHeaderCell" customModule="techBirds" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="230"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hgV-gw-K8t" id="OES-Fa-S5j">
@@ -123,16 +123,16 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WgT-i4-v1a">
-                                                            <rect key="frame" x="10" y="35" width="369" height="83"/>
+                                                            <rect key="frame" x="10" y="35" width="369" height="73"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OtQ-4G-iJC">
-                                                            <rect key="frame" x="326.5" y="121" width="47.5" height="37"/>
+                                                            <rect key="frame" x="316.5" y="121" width="57.5" height="37"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lcj-yI-bJ2">
-                                                                    <rect key="frame" x="5" y="10" width="37.5" height="17"/>
+                                                                    <rect key="frame" x="8" y="10" width="37.5" height="17"/>
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -141,12 +141,12 @@
                                                             <constraints>
                                                                 <constraint firstAttribute="bottom" secondItem="Lcj-yI-bJ2" secondAttribute="bottom" constant="10" id="TEU-f9-dgm"/>
                                                                 <constraint firstItem="Lcj-yI-bJ2" firstAttribute="top" secondItem="OtQ-4G-iJC" secondAttribute="top" constant="10" id="V7u-07-mcQ"/>
-                                                                <constraint firstAttribute="trailing" secondItem="Lcj-yI-bJ2" secondAttribute="trailing" constant="5" id="Wwe-X1-aO0"/>
-                                                                <constraint firstItem="Lcj-yI-bJ2" firstAttribute="leading" secondItem="OtQ-4G-iJC" secondAttribute="leading" constant="5" id="zeo-vX-DBe"/>
+                                                                <constraint firstAttribute="trailing" secondItem="Lcj-yI-bJ2" secondAttribute="trailing" constant="12" id="Wwe-X1-aO0"/>
+                                                                <constraint firstItem="Lcj-yI-bJ2" firstAttribute="leading" secondItem="OtQ-4G-iJC" secondAttribute="leading" constant="8" id="zeo-vX-DBe"/>
                                                             </constraints>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                    <real key="value" value="16"/>
+                                                                    <real key="value" value="0.0"/>
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
                                                         </view>
@@ -160,7 +160,7 @@
                                                         <constraint firstAttribute="trailing" secondItem="ljX-6b-Hww" secondAttribute="trailing" constant="10" id="c3I-kr-DGf"/>
                                                         <constraint firstItem="Yee-Ot-avY" firstAttribute="leading" secondItem="hS6-Xb-auB" secondAttribute="leading" constant="10" id="cTW-bB-DPl"/>
                                                         <constraint firstItem="WgT-i4-v1a" firstAttribute="top" secondItem="hS6-Xb-auB" secondAttribute="top" constant="35" id="haM-Cj-PJ2"/>
-                                                        <constraint firstAttribute="bottom" secondItem="WgT-i4-v1a" secondAttribute="bottom" constant="50" id="mqY-uz-oF1"/>
+                                                        <constraint firstAttribute="bottom" secondItem="WgT-i4-v1a" secondAttribute="bottom" constant="60" id="mqY-uz-oF1"/>
                                                         <constraint firstItem="ljX-6b-Hww" firstAttribute="top" secondItem="hS6-Xb-auB" secondAttribute="top" constant="10" id="oOe-oJ-pFr"/>
                                                         <constraint firstItem="Yee-Ot-avY" firstAttribute="top" secondItem="hS6-Xb-auB" secondAttribute="top" constant="10" id="q6s-eq-MPw"/>
                                                     </constraints>

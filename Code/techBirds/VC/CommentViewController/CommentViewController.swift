@@ -13,7 +13,10 @@ class CommentViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var reviews: [Review]?
-    var teamReviews: [Review] = []
+    var teamReviews: [Review] {
+        (reviews ?? []).filter { $0.team == App.current.selectedTeam }
+    }
+    
     var isDataLoading = false
     var pageNo = 1
     
@@ -36,7 +39,7 @@ extension CommentViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch Section(rawValue: section) {
         case .header: return 1
-        case .reviews: return (reviews ?? []).count
+        case .reviews: return teamReviews.count
         default: return 0
         }
     }
@@ -55,13 +58,11 @@ extension CommentViewController: UITableViewDataSource {
             return cell
             
         case .reviews:
-            
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell", for: indexPath) as? CommentsTableViewCell,
-                let reviews = reviews else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell", for: indexPath) as? CommentsTableViewCell else {
                 return defaultCell
             }
             
-            cell.configure(review: reviews[indexPath.row])
+            cell.configure(review: teamReviews[indexPath.row])
             
             return cell
             
