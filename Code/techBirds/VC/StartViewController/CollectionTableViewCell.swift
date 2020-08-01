@@ -10,12 +10,14 @@ import UIKit
 
 class CollectionTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var collectionView: UICollectionView?
     let avalibleApps = [UIImage(named: "sberLogo"), UIImage(named: "sberKZ"), UIImage(named: "sberBR")]
     let avalibleTitles = ["Сбербанк","Сбербанк Казахстан", "БПС-Сбербанк"]
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        collectionView?.selectItem(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: .left)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

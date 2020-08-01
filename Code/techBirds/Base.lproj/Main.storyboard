@@ -54,6 +54,9 @@
                                                                             </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
                                                                     </imageView>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="GYE-d1-eTh">
+                                                                        <rect key="frame" x="50" y="50.5" width="20" height="19"/>
+                                                                    </imageView>
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                                 <constraints>
@@ -61,8 +64,10 @@
                                                                     <constraint firstItem="uUN-HO-qBS" firstAttribute="top" secondItem="6zX-gl-9vB" secondAttribute="top" id="6C9-tw-DCk"/>
                                                                     <constraint firstAttribute="bottom" secondItem="uUN-HO-qBS" secondAttribute="bottom" id="LXb-c2-sXi"/>
                                                                     <constraint firstAttribute="trailing" secondItem="uUN-HO-qBS" secondAttribute="trailing" id="Ove-ai-lcY"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="GYE-d1-eTh" secondAttribute="bottom" id="VYo-zK-diD"/>
                                                                     <constraint firstItem="uUN-HO-qBS" firstAttribute="leading" secondItem="6zX-gl-9vB" secondAttribute="leading" id="YFs-At-8FB"/>
                                                                     <constraint firstAttribute="width" constant="70" id="z3p-is-Rjg"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="GYE-d1-eTh" secondAttribute="trailing" id="zPW-bZ-r1Q"/>
                                                                 </constraints>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -100,6 +105,7 @@
                                                         </constraints>
                                                     </collectionViewCellContentView>
                                                     <connections>
+                                                        <outlet property="checkmark" destination="GYE-d1-eTh" id="6A9-M3-Ynf"/>
                                                         <outlet property="imageView" destination="uUN-HO-qBS" id="kjQ-cN-AcQ"/>
                                                         <outlet property="titleLabel" destination="LkV-rq-ycU" id="gCa-1G-ibo"/>
                                                     </connections>
@@ -118,6 +124,9 @@
                                         <constraint firstItem="F8U-xY-6nZ" firstAttribute="top" secondItem="NKH-lO-lVC" secondAttribute="top" id="oLH-yK-pRF"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="collectionView" destination="F8U-xY-6nZ" id="874-we-OXG"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="commandCell" rowHeight="68" id="XFJ-n5-eP1" customClass="CommandsTableViewCell" customModule="techBirds" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="166" width="414" height="68"/>
@@ -220,6 +229,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="checkmark.circle" catalog="system" width="128" height="121"/>
         <image name="sberLogo" width="512" height="512"/>
     </resources>
 </document>
