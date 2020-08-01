@@ -208,6 +208,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="sberLogo" width="200" height="200"/>
+        <image name="sberLogo" width="512" height="512"/>
     </resources>
 </document>

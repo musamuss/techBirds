@@ -17,8 +17,7 @@ class CommentViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.estimatedRowHeight = 72
-        tableView.rowHeight = UITableView.automaticDimension
+
         // Do any additional setup after loading the view.
     }
 
@@ -35,7 +34,7 @@ extension CommentViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell", for: indexPath) as! CommentsTableViewCell
-        cell.descriptionLabel.text = "{Eqesdfvgsdfgsgbew;nserhiv;w49u8phg 45425h g8hw2ghpfg p89h245pf9h2p45ftpw945gt p9{Eqesdfvgsdfgsgbew;nserhiv;w49u8phg 45425h g8hw2ghpfg p89h245pf9h2p45ftpw945gt p9{Eqesdfvgsdfgsgbew;nserhiv;w49u8phg 45425h g8hw2ghpfg p89h245pf9h2p45ftpw945gt p9{Eqesdfvgsdfgsgbew;nserhiv;w49u8phg 45425h g8hw2ghpfg p89h245pf9h2p45ftpw945gt p9{Eqesdfvgsdfgsgbew;nserhiv;w49u8phg 45425h g8hw2ghpfg p89h245pf9h2p45ftpw945gt p9{Eqesdfvgsdfgsgbew;nserhiv;w49u8phg 45425h g8hw2ghpfg p89h245pf9h2p45ftpw945gt p9"
+        
         return cell
     }
     
