@@ -10,8 +10,8 @@ import UIKit
 
 class CollectionTableViewCell: UITableViewCell {
     
-    let avalibleApps = [UIImage(named: "sberLogo"), UIImage(named: "sberKZ")]
-    let avalibleTitles = ["Сбербанк","Сбербанк Казахстан"]
+    let avalibleApps = [UIImage(named: "sberLogo"), UIImage(named: "sberKZ"), UIImage(named: "sberBR")]
+    let avalibleTitles = ["Сбербанк","Сбербанк Казахстан", "БПС-Сбербанк"]
     
     override func awakeFromNib() {
         super.awakeFromNib()
