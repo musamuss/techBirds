@@ -11,6 +11,21 @@ import Foundation
 class App {
     static let current = App()
     
+    // Config
+    private(set) var selectedTeam: Team = .undefined
+    
+    // Services
     let appStore = AppStoreService()
+    
+    // Classifiers
     let categoriesClassifier = CategoriesClassifierService()
+    let teamsClassifier = TeamsClassifierService()
+    
+    // MARK: Methods
+    
+    func updateTeam(_ team: Team) {
+        self.selectedTeam = team
+    }
 }
+
+typealias Team = Review.Team

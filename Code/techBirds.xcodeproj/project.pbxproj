@@ -21,10 +21,12 @@
 		84FB37F024D495FA00DCD835 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FB37EF24D495FA00DCD835 /* UIView+Ext.swift */; };
 		84FB37F224D4B0D400DCD835 /* CollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FB37F124D4B0D400DCD835 /* CollectionTableViewCell.swift */; };
 		A56C3A9824D47C44001A4543 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56C3A9724D47C44001A4543 /* App.swift */; };
-		A56C3A9A24D47C9F001A4543 /* CategoriesClassifierService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56C3A9924D47C9F001A4543 /* CategoriesClassifierService.swift */; };
 		A56C3A9C24D47CBD001A4543 /* AppStoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56C3A9B24D47CBD001A4543 /* AppStoreService.swift */; };
-		A56C3AA024D49F88001A4543 /* CategoriesClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A56C3A9F24D49F88001A4543 /* CategoriesClassifier.mlmodel */; };
 		A5B3C60424D4A3860073E98B /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B3C60324D4A3860073E98B /* Review.swift */; };
+		A5B3C62824D55B5F0073E98B /* CategoriesClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A5B3C62724D55B5E0073E98B /* CategoriesClassifier.mlmodel */; };
+		A5B3C62A24D55B8D0073E98B /* TeamsClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A5B3C62924D55B8D0073E98B /* TeamsClassifier.mlmodel */; };
+		A5B3C62D24D55BB10073E98B /* TeamsClassifierService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B3C62C24D55BB10073E98B /* TeamsClassifierService.swift */; };
+		A5B3C63024D55FF40073E98B /* CategoriesClassifierService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56C3A9924D47C9F001A4543 /* CategoriesClassifierService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +50,9 @@
 		A56C3A9B24D47CBD001A4543 /* AppStoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreService.swift; sourceTree = "<group>"; };
 		A56C3A9F24D49F88001A4543 /* CategoriesClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = CategoriesClassifier.mlmodel; sourceTree = "<group>"; };
 		A5B3C60324D4A3860073E98B /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
+		A5B3C62724D55B5E0073E98B /* CategoriesClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = CategoriesClassifier.mlmodel; sourceTree = "<group>"; };
+		A5B3C62924D55B8D0073E98B /* TeamsClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = TeamsClassifier.mlmodel; sourceTree = "<group>"; };
+		A5B3C62C24D55BB10073E98B /* TeamsClassifierService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsClassifierService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +71,7 @@
 			children = (
 				84951F7C24D4781700271113 /* techBirds */,
 				84951F7B24D4781700271113 /* Products */,
+				A5B3C62F24D55EA00073E98B /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -136,6 +142,7 @@
 			children = (
 				A56C3A9B24D47CBD001A4543 /* AppStoreService.swift */,
 				A56C3AA124D49F9A001A4543 /* Categories Classifier */,
+				A5B3C62B24D55B940073E98B /* Teams Classifier */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -154,7 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				A56C3A9924D47C9F001A4543 /* CategoriesClassifierService.swift */,
-				A56C3A9F24D49F88001A4543 /* CategoriesClassifier.mlmodel */,
+				A5B3C62724D55B5E0073E98B /* CategoriesClassifier.mlmodel */,
 			);
 			path = "Categories Classifier";
 			sourceTree = "<group>";
@@ -165,6 +172,23 @@
 				A5B3C60324D4A3860073E98B /* Review.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		A5B3C62B24D55B940073E98B /* Teams Classifier */ = {
+			isa = PBXGroup;
+			children = (
+				A5B3C62C24D55BB10073E98B /* TeamsClassifierService.swift */,
+				A5B3C62924D55B8D0073E98B /* TeamsClassifier.mlmodel */,
+			);
+			path = "Teams Classifier";
+			sourceTree = "<group>";
+		};
+		A5B3C62F24D55EA00073E98B /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				A56C3A9F24D49F88001A4543 /* CategoriesClassifier.mlmodel */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,18 +263,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A56C3A9A24D47C9F001A4543 /* CategoriesClassifierService.swift in Sources */,
+				A5B3C63024D55FF40073E98B /* CategoriesClassifierService.swift in Sources */,
 				84951F9A24D4877A00271113 /* CommentViewController.swift in Sources */,
+				A5B3C62A24D55B8D0073E98B /* TeamsClassifier.mlmodel in Sources */,
 				A5B3C60424D4A3860073E98B /* Review.swift in Sources */,
-				A56C3A9A24D47C9F001A4543 /* CategoriesClassifierService.swift in Sources */,
 				84FB37ED24D4927400DCD835 /* AppsCollectionViewCell.swift in Sources */,
 				A56C3A9824D47C44001A4543 /* App.swift in Sources */,
+				A5B3C62D24D55BB10073E98B /* TeamsClassifierService.swift in Sources */,
 				84951F7E24D4781700271113 /* AppDelegate.swift in Sources */,
-				A56C3AA024D49F88001A4543 /* CategoriesClassifier.mlmodel in Sources */,
 				84FB37F224D4B0D400DCD835 /* CollectionTableViewCell.swift in Sources */,
 				84FB37F024D495FA00DCD835 /* UIView+Ext.swift in Sources */,
 				84951F8024D4781700271113 /* SceneDelegate.swift in Sources */,
 				2DBD24FC24D4A0FF002DFFAE /* CommentsTableViewCell.swift in Sources */,
+				A5B3C62824D55B5F0073E98B /* CategoriesClassifier.mlmodel in Sources */,
 				845863EA24D547620030DD9F /* CommandsTableViewCell.swift in Sources */,
 				A56C3A9C24D47CBD001A4543 /* AppStoreService.swift in Sources */,
 				84951F9624D483EF00271113 /* StartViewController.swift in Sources */,

@@ -22,8 +22,12 @@ class StartViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? CommentViewController, let rowSelected = rowSelected {
-            vc.navigationItem.title = avalibleTeam[rowSelected].rawValue
-            vc.review = rewiew
+            let selectedTeam = avalibleTeam[rowSelected]
+            
+            App.current.updateTeam(selectedTeam)
+            
+            vc.navigationItem.title = selectedTeam.rawValue
+            vc.reviews = rewiew
         }
     }
 

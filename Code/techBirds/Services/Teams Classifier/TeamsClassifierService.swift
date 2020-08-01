@@ -1,19 +1,19 @@
 //
-//  ClassifierService.swift
+//  TeamsClassifierService.swift
 //  techBirds
 //
-//  Created by Artem Belkov on 31.07.2020.
+//  Created by Artem Belkov on 01.08.2020.
 //  Copyright © 2020 techBirds. All rights reserved.
 //
 
 import NaturalLanguage
 import CoreML
 
-class CategoriesClassifierService {
-    
+class TeamsClassifierService {
+        
     init() {
         do {
-            model = try CategoriesClassifier(configuration: configuration).model
+            model = try TeamsClassifier(configuration: configuration).model
             predictor = try NLModel(mlModel: model)
         } catch let error {
             fatalError(error.localizedDescription)
@@ -23,9 +23,9 @@ class CategoriesClassifierService {
     func classify(_ review: Review) -> Review {
         var review = review
         
-        if let rawCategory = predictor.predictedLabel(for: review.text),
-           let category = Review.Category(rawValue: rawCategory) {
-            review.updateCategory(category)
+        if let rawTeam = predictor.predictedLabel(for: review.text),
+           let team = Review.Team(rawValue: rawTeam) {
+            review.updateTeam(team)
         }
                 
         return review

@@ -18,20 +18,6 @@ class ViewController: NSViewController {
     @IBOutlet weak var categoryBox: NSComboBox!
     @IBOutlet weak var indicator: NSProgressIndicator!
     
-    private let reviewsCount = 100
-    private let reviewsPerPage = 50
-    private var pagesCount: Int { reviewsCount / reviewsPerPage }
-    
-    private let categoryName = "category_dataset.json"
-    private let teamName = "team_dataset.json"
-
-    private let encoder = JSONEncoder()
-    
-    private var currentPage = 0
-    private var reviews: [Review] = []
-    
-    private var currentReview = 0
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -47,56 +33,7 @@ class ViewController: NSViewController {
             self.showReview(for: self.currentReview)
         }
     }
-    
-    private func showReview(for index: Int) {
-        guard index < reviews.count else { return }
         
-        let review = reviews[index]
-        
-        progressField.stringValue = "\(currentReview + 1)/\(reviews.count)"
-        usernameField.stringValue = review.author
-        ratingField.stringValue = String(repeating: "⭐️", count: review.rating)
-        reviewField.stringValue = review.text
-
-        categoryBox.addItems(withObjectValues: Review.Category.all.map { $0.rawValue })
-        categoryBox.selectItem(at: 0)
-        
-        teamBox.addItems(withObjectValues: Review.Team.all.map { $0.rawValue })
-        teamBox.selectItem(at: 0)
-    }
-    
-    private func saveMarkups(_ markups: [Review.Markup], for name: String) {
-        guard let url = try? FileManager.default.url(
-            for: .downloadsDirectory,
-            in: .userDomainMask,
-            appropriateFor: nil,
-            create: false
-        ).appendingPathComponent(name) else {
-            return
-        }
-        
-        let data = try? encoder.encode(markups)
-        try? data?.write(to: url)
-    }
-
-    // MARK: Loading
-    
-    private func loadReviews(completion: @escaping () -> Void) {
-        currentPage += 1
-        
-        AppStore.current.getReviews(appID: .sberbankOnline, page: currentPage) { [unowned self] reviews in
-            guard self.currentPage <= self.pagesCount, !reviews.isEmpty else {
-                DispatchQueue.main.async {
-                    completion()
-                }
-                return
-            }
-            
-            self.reviews.append(contentsOf: reviews)
-            self.loadReviews(completion: completion)
-        }
-    }
-    
     // MARK: Actions
     
     @IBAction func nextReviewTapped(_ sender: Any) {
@@ -124,6 +61,78 @@ class ViewController: NSViewController {
             .filter { $0.team != .undefined }
             .map { $0.teamMarkup }
         saveMarkups(filteredTeams, for: teamName)
+    }
+    
+    // MARK: Private
+    
+    private let startPage = 3
+    private let reviewsCount = 200
+    private let reviewsPerPage = 50
+    private var pagesCount: Int { reviewsCount / reviewsPerPage }
+    
+    private let categoryName = "category_dataset.json"
+    private let teamName = "team_dataset.json"
+
+    private let encoder = JSONEncoder()
+    
+    private var currentPage = 0
+    private var reviews: [Review] = []
+    
+    private var currentReview = 0
+    
+    private func showReview(for index: Int) {
+        guard index < reviews.count else { return }
+        
+        let review = reviews[index]
+        
+        progressField.stringValue = "\(currentReview + 1)/\(reviews.count)"
+        usernameField.stringValue = review.author
+        ratingField.stringValue = String(repeating: "⭐️", count: review.rating)
+        reviewField.stringValue = review.text
+
+        categoryBox.removeAllItems()
+        categoryBox.addItems(withObjectValues: Review.Category.all.map { $0.rawValue })
+        categoryBox.selectItem(at: 0)
+        
+        teamBox.removeAllItems()
+        teamBox.addItems(withObjectValues: Review.Team.all.map { $0.rawValue })
+        teamBox.selectItem(at: 0)
+    }
+    
+    private func saveMarkups(_ markups: [Review.Markup], for name: String) {
+        do {
+            guard let url = try? FileManager.default.url(
+                for: .downloadsDirectory,
+                in: .userDomainMask,
+                appropriateFor: nil,
+                create: false
+            ).appendingPathComponent(name) else {
+                return
+            }
+            
+            let data = try encoder.encode(markups)
+            try data.write(to: url)
+        } catch let error {
+            fatalError(error.localizedDescription)
+        }
+    }
+
+    // MARK: Loading
+    
+    private func loadReviews(completion: @escaping () -> Void) {
+        currentPage += 1
+        
+        AppStore.current.getReviews(appID: .sberbankOnline, page: startPage + currentPage) { [unowned self] reviews in
+            guard self.currentPage <= self.pagesCount, !reviews.isEmpty else {
+                DispatchQueue.main.async {
+                    completion()
+                }
+                return
+            }
+            
+            self.reviews.append(contentsOf: reviews)
+            self.loadReviews(completion: completion)
+        }
     }
 }
 
