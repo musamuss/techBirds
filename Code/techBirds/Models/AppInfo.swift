@@ -32,8 +32,10 @@ extension AppInfo: Decodable {
 
 struct SearchResults: Decodable {
     let appsInfo: [AppInfo]
+    let androidInfo: [AppInfo] = [AppInfo(name: "Sberbank", rating: 0, reviewsCount: 0)]
     
     enum CodingKeys: String, CodingKey {
         case appsInfo = "results"
+        case androidInfo = "results1"
     }
 }

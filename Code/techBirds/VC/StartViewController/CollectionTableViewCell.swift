@@ -11,8 +11,8 @@ import UIKit
 class CollectionTableViewCell: UITableViewCell {
     
     @IBOutlet weak var collectionView: UICollectionView?
-    let avalibleApps = [UIImage(named: "sberLogo"), UIImage(named: "sberKZ"), UIImage(named: "sberBR")]
-    let avalibleTitles = ["Сбербанк","Сбербанк Казахстан", "БПС-Сбербанк"]
+    let avalibleApps = [UIImage(named: "sberLogo"), UIImage(named: "sberLogo"),UIImage(named: "sberKZ"), UIImage(named: "sberBR")]
+    let avalibleTitles = ["Сбербанк-iOS","Сбербанк-Android","Сбербанк Казахстан", "БПС-Сбербанк"]
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,8 +34,9 @@ extension CollectionTableViewCell: UICollectionViewDataSource, UICollectionViewD
         var currentApp: AppID = .sberbankOnline
         switch indexPath.row {
         case 0: currentApp = .sberbankOnline
-        case 1: currentApp = .sberKazahstan
-        case 2: currentApp = .sberBelorus
+        case 1: currentApp = .sberbankOnlineAndroid
+        case 2: currentApp = .sberKazahstan
+        case 3: currentApp = .sberBelorus
         default: break
         }
         App.current.updateApp(currentApp)

@@ -15,7 +15,11 @@ class AppStoreService {
         
         makeGetRequest(url: url, modelType: SearchResults.self) { result in
             if case .success(let results) = result {
-                completion(results.appsInfo.first!)
+                if appID == .sberbankOnlineAndroid {
+                    completion(results.androidInfo.first!)
+                } else {
+                    completion(results.appsInfo.first!)
+                }
             }
         }
     }
@@ -23,6 +27,14 @@ class AppStoreService {
     func getReviews(appID: AppID, page: Int, completion: @escaping ([Review]) -> Void) {
         guard page > 0 else {
             completion([])
+            return
+        }
+        if appID == .sberbankOnlineAndroid {
+            let startIndex = page * 50
+            let lastIndex = startIndex + 50
+
+            let reviews = additionalReviews[startIndex...lastIndex]
+            completion(Array(reviews))
             return
         }
         
@@ -120,10 +132,39 @@ class AppStoreService {
         
         return reviews
     }()
+    
+    private lazy var additionalAndroidReviews: [Review] = {
+        guard let path = Bundle.main.path(forResource: "reviews_data", ofType: "json"),
+            let data = try? Data(contentsOf: URL(fileURLWithPath: path)),
+            let rawReviews = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [[String: Any]] else {
+            return []
+        }
+        
+        let reviews: [Review] = rawReviews.compactMap { raw in
+            guard
+                let author = raw["author"] as? String,
+                let ratingString = raw["rating"] as? String,
+                let rating = Int(ratingString),
+                let title = raw["title"] as? String,
+                let content = raw["content"] as? String else {
+                return nil
+            }
+
+            return .init(
+                author: author,
+                rating: rating,
+                title: title,
+                content: content
+            )
+        }
+        
+        return reviews
+    }()
 }
 
 enum AppID: Int {
     case sberbankOnline = 492224193
+    case sberbankOnlineAndroid = 0
     case sberKazahstan = 993084220
     case sberBelorus = 1382598666
 }
