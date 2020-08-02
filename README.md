@@ -1,5 +1,9 @@
 # Tech Birds
 
+<p align="center">
+  <img width=300 src="https://github.com/musamuss/techBirds/blob/master/Resources/5ebcd1279af945201a0273f9cc0160f1.png" alt="Logo"/>
+</p>
+
 Проект команды **Tech Birds** для финальной части онлайн-хакатона [SberCode](https://sbercode.tech/sberbank-online).
 
 ## Описание задачи
