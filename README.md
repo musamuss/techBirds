@@ -1,6 +1,6 @@
-# README
+# Tech Birds
 
-Поздравляем с выходом в финальную часть онлайн-хакатона [SberCode](https://sbercode.tech/sberbank-online). В напряженной борьбе вам предстоит бороться за главный приз хакатона. Желаем удачи.
+Проект команды **Tech Birds** для финальной части онлайн-хакатона [SberCode](https://sbercode.tech/sberbank-online).
 
 ## Описание задачи
 
@@ -12,12 +12,12 @@ Cистема классификации отзывов пользователе
 
 ## Дополнительные ссылки
 
-Обучение нейросети - https://github.com/apple/turicreate
-Документация апла - https://developer.apple.com/documentation/
+- Обучение нейросети - https://github.com/apple/turicreate
+- Документация Apple - https://developer.apple.com/documentation/
 
 ## Контакты
 
-https://t.me/igoryasha973 - Игорь
-https://t.me/musamuss - Муса
-https://t.me/bestK1ngArthur - Артем
+- [Игорь](https://t.me/igoryasha973 )
+- [Муса](https://t.me/musamuss)
+- [Артем](https://t.me/bestK1ngArthur)
 
