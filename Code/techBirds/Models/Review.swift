@@ -17,14 +17,19 @@ struct Review {
     var text: String { "\(title) \(content)" }
     
     private(set) var category: Category = .undefined
+    private(set) var categoryPropability: [String: Double] = [:]
+    
     private(set) var team: Team = .undefined
+    private(set) var teamPropability: [String: Double] = [:]
 
-    mutating func updateCategory(_ category: Category) {
+    mutating func updateCategory(_ category: Category, propability: [String: Double]) {
         self.category = category
+        self.categoryPropability = propability
     }
     
-    mutating func updateTeam(_ team: Team) {
+    mutating func updateTeam(_ team: Team, propability: [String: Double]) {
         self.team = team
+        self.teamPropability = propability
     }
 }
 

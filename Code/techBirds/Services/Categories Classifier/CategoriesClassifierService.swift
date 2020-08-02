@@ -27,7 +27,7 @@ class CategoriesClassifierService {
             print(prefiction.categoryProbability)
             
             if let category = Review.Category(rawValue: prefiction.category) {
-                review.updateCategory(category)
+                review.updateCategory(category, propability: prefiction.categoryProbability)
             }
                         
         } catch let error {

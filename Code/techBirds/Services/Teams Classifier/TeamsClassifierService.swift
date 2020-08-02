@@ -27,7 +27,7 @@ class TeamsClassifierService {
             print(prefiction.teamProbability)
             
             if let team = Review.Team(rawValue: prefiction.team) {
-                review.updateTeam(team)
+                review.updateTeam(team, propability: prefiction.teamProbability)
             }
                         
         } catch let error {
