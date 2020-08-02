@@ -1,0 +1,13 @@
+[sframe]
+version=0
+num_segments=0
+num_columns=3
+nrows=26
+[column_names]
+0000=class
+0001=predicted_class
+0002=count
+[column_files]
+0000=m_b6f797b5fea7fe3b.sidx:0
+0001=m_b6f797b5fea7fe3b.sidx:1
+0002=m_b6f797b5fea7fe3b.sidx:2

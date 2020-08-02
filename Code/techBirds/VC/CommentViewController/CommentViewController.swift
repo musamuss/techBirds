@@ -37,7 +37,28 @@ class CommentViewController: UIViewController {
 }
 // MARK: - UITableViewDelegate
 extension CommentViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let review = teamReviews[indexPath.row]
+        
+        let categoriesText = composeNiceText(review.categoryPropability)
+        let teamsText = composeNiceText(review.teamPropability)
+        
+        let alert = UIAlertController(title: review.title, message: "\(categoriesText)\n\(teamsText)", preferredStyle: .alert)
+        alert.addAction(.init(title: "Ок", style: .cancel, handler: nil))
+        
+        present(alert, animated: true, completion: nil)
+    }
     
+    private func composeNiceText(_ dict: [String: Double]) -> String {
+        var text = ""
+        
+        dict.keys.forEach { key in
+            guard let value = dict[key] else { return }
+            text.append("\(key): \(value)\n")
+        }
+        
+        return text
+    }
 }
 
 // MARK: - UITableViewDataSource

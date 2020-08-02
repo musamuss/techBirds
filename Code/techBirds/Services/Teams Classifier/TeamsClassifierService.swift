@@ -13,8 +13,7 @@ class TeamsClassifierService {
         
     init() {
         do {
-            model = try TeamsClassifier(configuration: configuration).model
-            predictor = try NLModel(mlModel: model)
+            classifier = try TeamsClassifier(configuration: configuration)
         } catch let error {
             fatalError(error.localizedDescription)
         }
@@ -23,16 +22,21 @@ class TeamsClassifierService {
     func classify(_ review: Review) -> Review {
         var review = review
         
-        if let rawTeam = predictor.predictedLabel(for: review.text),
-           let team = Review.Team(rawValue: rawTeam) {
-            review.updateTeam(team)
+        do {
+            let prefiction = try classifier.prediction(review: makeWordsFeatures(review.text))
+            print(prefiction.teamProbability)
+            
+            if let team = Review.Team(rawValue: prefiction.team) {
+                review.updateTeam(team, propability: prefiction.teamProbability)
+            }
+                        
+        } catch let error {
+            fatalError(error.localizedDescription)
         }
-                
+              
         return review
     }
     
-    private let model: MLModel
-    private let predictor: NLModel
-    
+    private let classifier: TeamsClassifier
     private let configuration = MLModelConfiguration()
 }
