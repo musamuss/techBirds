@@ -35,7 +35,7 @@ class DemoViewController: UIViewController {
         let dictValInc = dict.sorted(by: { $0.value > $1.value })
         
         for i in dictValInc {
-            text.append("\(i)\n")
+            text.append("\(i.key): \(i.value)\n")
         }
         return text
     }
