@@ -37,6 +37,18 @@ class CategoriesClassifierService {
         return review
     }
     
+    func classifyText(_ text: String) -> [String:Double] {
+                
+        do {
+            let prefiction = try classifier.prediction(review: makeWordsFeatures(text))
+            
+            return prefiction.categoryProbability
+                        
+        } catch let error {
+            fatalError(error.localizedDescription)
+        }
+    }
+    
     private let classifier: CategoriesClassifier
     private let configuration = MLModelConfiguration()
 }

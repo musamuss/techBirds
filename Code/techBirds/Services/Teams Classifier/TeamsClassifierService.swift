@@ -37,6 +37,18 @@ class TeamsClassifierService {
         return review
     }
     
+    func classifyText(_ text: String) -> [String:Double] {
+                
+        do {
+            let prefiction = try classifier.prediction(review: makeWordsFeatures(text))
+            
+            return prefiction.teamProbability
+                        
+        } catch let error {
+            fatalError(error.localizedDescription)
+        }
+    }
+    
     private let classifier: TeamsClassifier
     private let configuration = MLModelConfiguration()
 }

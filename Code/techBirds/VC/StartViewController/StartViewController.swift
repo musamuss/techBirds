@@ -17,7 +17,7 @@ class StartViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Команды"
-        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Demo", style: .plain, target: self, action: #selector(demoTapped))
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -29,6 +29,10 @@ class StartViewController: UITableViewController {
             vc.navigationItem.title = selectedTeam.rawValue
             vc.reviews = rewiew
         }
+    }
+    
+    @objc func demoTapped() {
+        performSegue(withIdentifier: "openDemo", sender: self)
     }
 }
 
