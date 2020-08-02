@@ -12,6 +12,14 @@ class AppStore {
     static let current = AppStore()
     
     func getReviews(appID: AppID, page: Int, completion: @escaping ([Review]) -> Void) {
+        if appID == .sberbankOnline {
+            let startIndex = page * 50
+            let lastIndex = startIndex + 50
+            
+            let reviews = additionalReviews[startIndex...lastIndex]
+            completion(Array(reviews))
+            return
+        }
         guard page > 0 else { fatalError("Page can't be negative") }
 
         let url = reviewsEndpoint(appID: appID, page: page)
@@ -65,6 +73,34 @@ class AppStore {
         task.resume()
     }
 }
+
+private var additionalReviews: [Review] = {
+    guard let path = Bundle.main.path(forResource: "reviews_data", ofType: "json"),
+        let data = try? Data(contentsOf: URL(fileURLWithPath: path)),
+        let rawReviews = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [[String: Any]] else {
+        return []
+    }
+    
+    let reviews: [Review] = rawReviews.compactMap { raw in
+        guard
+            let author = raw["author"] as? String,
+            let ratingString = raw["rating"] as? String,
+            let rating = Int(ratingString),
+            let title = raw["title"] as? String,
+            let content = raw["content"] as? String else {
+            return nil
+        }
+
+        return .init(
+            author: author,
+            rating: rating,
+            title: title,
+            content: content
+        )
+    }
+    
+    return reviews
+}()
 
 enum AppID: Int {
     case sberbankOnline = 492224193
