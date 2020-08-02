@@ -192,11 +192,22 @@
                     <navigationItem key="navigationItem" id="BVO-ca-2oe"/>
                     <connections>
                         <segue destination="Mgx-Kh-bJV" kind="show" identifier="toComments" id="HZ4-SN-obb"/>
+                        <segue destination="n1c-2v-DZq" kind="show" identifier="openDemo" id="OMU-ch-H6q"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jT6-uu-0BN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="958" y="150"/>
+        </scene>
+        <!--Demo-->
+        <scene sceneID="Yhc-d4-fzA">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Demo" id="n1c-2v-DZq" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="NYh-2T-Ihl"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BJq-AT-j0l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1703" y="46"/>
         </scene>
         <!--CommentViewController-->
         <scene sceneID="t4Y-6b-mrq">

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SrB-Rb-hm5">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Demo View Controller-->
+        <scene sceneID="C88-p8-cWX">
+            <objects>
+                <viewController id="SrB-Rb-hm5" customClass="DemoViewController" customModule="techBirds" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Npd-Lc-XE7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="введите комментарий" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HsO-zj-sCb">
+                                <rect key="frame" x="16" y="131" width="382" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="omo-gy-u2I">
+                                <rect key="frame" x="16" y="181" width="382" height="30"/>
+                                <state key="normal" title="Оценка"/>
+                                <connections>
+                                    <action selector="buttonAction" destination="SrB-Rb-hm5" eventType="touchUpInside" id="vUP-wm-5LP"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2vw-kb-c6G">
+                                <rect key="frame" x="16" y="227" width="382" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="XSp-Oz-N53" firstAttribute="trailing" secondItem="2vw-kb-c6G" secondAttribute="trailing" constant="16" id="1aX-DT-XFk"/>
+                            <constraint firstItem="XSp-Oz-N53" firstAttribute="trailing" secondItem="HsO-zj-sCb" secondAttribute="trailing" constant="16" id="5GS-kB-rtP"/>
+                            <constraint firstItem="HsO-zj-sCb" firstAttribute="leading" secondItem="XSp-Oz-N53" secondAttribute="leading" constant="16" id="8eG-Cr-3jU"/>
+                            <constraint firstItem="2vw-kb-c6G" firstAttribute="top" secondItem="omo-gy-u2I" secondAttribute="bottom" constant="16" id="DdJ-oz-RCa"/>
+                            <constraint firstItem="HsO-zj-sCb" firstAttribute="top" secondItem="XSp-Oz-N53" secondAttribute="top" constant="87" id="FZz-qg-7Qx"/>
+                            <constraint firstItem="XSp-Oz-N53" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="2vw-kb-c6G" secondAttribute="bottom" constant="16" id="MLL-Mj-Scb"/>
+                            <constraint firstItem="2vw-kb-c6G" firstAttribute="leading" secondItem="XSp-Oz-N53" secondAttribute="leading" constant="16" id="N7E-4R-6gX"/>
+                            <constraint firstItem="omo-gy-u2I" firstAttribute="leading" secondItem="XSp-Oz-N53" secondAttribute="leading" constant="16" id="YUK-D4-J4H"/>
+                            <constraint firstItem="XSp-Oz-N53" firstAttribute="trailing" secondItem="omo-gy-u2I" secondAttribute="trailing" constant="16" id="dTo-bm-xcZ"/>
+                            <constraint firstItem="omo-gy-u2I" firstAttribute="top" secondItem="HsO-zj-sCb" secondAttribute="bottom" constant="16" id="xxs-wE-HWs"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="XSp-Oz-N53"/>
+                    </view>
+                    <connections>
+                        <outlet property="button" destination="omo-gy-u2I" id="Gcc-BM-r9u"/>
+                        <outlet property="enterComment" destination="HsO-zj-sCb" id="q99-Qj-ZUz"/>
+                        <outlet property="resultLabel" destination="2vw-kb-c6G" id="wmd-tN-Emy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MA8-ZL-kSu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="350.72463768115944" y="-190.17857142857142"/>
+        </scene>
+    </scenes>
+</document>
